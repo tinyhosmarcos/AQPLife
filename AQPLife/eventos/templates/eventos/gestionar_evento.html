@@ -1,0 +1,18 @@
+{%extends 'eventos/index.html'%}
+{% load static %}
+
+{%block title%}Gestionar Eventos{%endblock%}
+
+
+
+{%block eventos_list%}
+	
+			{%for personal in object.personal_set.all%}
+				<div class="carousel-item red white-text" href="#lel!">
+					<h2>{{personal.evento}}</h2>
+					<a href="{%url 'eventos:evento' personal.evento.id%}">Link</a>
+					<p class="white-text">{{personal.evento.tipo_evento}}</p>
+				</div>
+			{%endfor%}
+
+			{%endblock%}

@@ -1,0 +1,81 @@
+{%extends 'eventos/index.html'%}
+
+{%block title%}{{object.nombre}}{%endblock%}
+
+{%block section_1%}
+	<div class="section container row">
+		<div class="col s9">
+			<table class="highlight">
+				<thead>
+					<tr>
+					<th>Nombre</th>
+					<td>{{object.nombre}}</td>
+					</tr>
+				</thead>
+
+				<tbody>
+				<tr>
+					<th>Tipo</th>
+					<td>{{object.tipo_evento}}</td>
+				</tr>
+				<tr>
+					<th>Fecha de Inicio</th>
+					<td>{{object.fecha_inicio}}</td>
+				</tr>
+				<tr>
+					<th>Fecha de Cierre</th>
+					<td>{{object.fecha_fin}}</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col s3 center-align">
+			<div class="section">
+				<a href="{%url 'eventos:modificar_evento' object.id%}" class="waves-effect waves-light btn-large center-align"><i class="material-icons right">assignment</i>Modificar</a>
+			</div>
+			<div class="section">
+				<a href="{%url 'eventos:gestionar_ambiente' object.id%}" class="waves-effect waves-light btn-large center-align"><i class="material-icons right">airline_seat_legroom_normal</i>Ambientes</a>
+			</div>
+			<div class="section">
+				<a href="{%url 'eventos:gestionar_material' object.id%}" class="waves-effect waves-light btn-large center-align"><i class="material-icons right">border_color</i>Materiales</a>		
+			</div>
+			
+		</div>
+		
+	</div>
+{%endblock%}
+
+{%block section_2%}
+	
+	<div class="section container">
+		<h2>Actividades</h2>
+		<div class="section">
+				<a href="{%url 'eventos:gestionar_actividad' object.id%}" class="waves-effect waves-light btn-large center-align"><i class="material-icons right">art_track</i>Gestionar</a>		
+			</div>
+      <table>
+        <thead>
+          <tr>
+              <th>Nombre</th>
+              <th>Ambiente</th>
+              <th>Fecha</th>
+              <th>Hora de Inicio</th>
+              <th>Hora de Termino</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        	{%for actividad in object.actividad_set.all%}
+          <tr>
+            <td>{{actividad.nombre}}</td>
+            <td>{{actividad.ambiente}}</td>
+            <td>{{actividad.fecha}}</td>
+            <td>{{actividad.hora_inicio}}</td>
+            <td>{{actividad.hora_fin}}</td>
+          </tr>
+        	{%endfor%}
+        </tbody>
+      </table>
+            	
+	</div>
+	
+{%endblock%}

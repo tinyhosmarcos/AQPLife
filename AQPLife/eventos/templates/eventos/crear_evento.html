@@ -1,0 +1,16 @@
+{%extends 'eventos/index.html'%}
+
+{%block title%}Modificar Evento{%endblock%}
+
+{%block section_1%}
+	<div class="section container row">
+		<h2> Modificar Datos </h2>
+
+				<form action="" method="post">
+		    {% csrf_token %}
+		    {{ form.as_p }}
+		    <input type="submit" value="Agregar">
+		</form>
+				
+	</div>
+{%endblock%}
