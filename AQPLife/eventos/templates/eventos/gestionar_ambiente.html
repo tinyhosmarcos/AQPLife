@@ -1,0 +1,84 @@
+{%extends 'eventos/index.html'%}
+{%block title%}Gestionar Ambientes{%endblock%}
+
+{%block section_1%}
+	<div class="section row container">
+		<h2>Ambientes Creados</h2>
+		<div class="col s9">
+			<table class="striped">
+				<thead>
+					<tr>
+						<th>Nombre de Ambiente</th>
+						<th>Ubicacion</th>
+						<th>Capacidad</th>
+					</tr>
+				</thead>
+				<tbody>
+					{%for ambiente in evento.ambiente_set.all%}
+					<tr>
+						<td>{{ambiente.nombre}}</td>
+						<td>{{ambiente.ubicacion}}</td>
+						<td>{{ambiente.capacidad}} </td>			
+					</tr>
+					{%endfor%}
+				</tbody>
+			</table>
+						
+		</div>
+		<div class="col s3">
+			<a class="waves-effect waves-light btn modal-trigger" href="#AgregarAmbiente">Agregar ambiente</a>
+
+			<!-- Modal Structure -->
+			<div id="AgregarAmbiente" class="modal">
+				<form action="" method="post">
+				<div class="modal-content">
+				<h4>Agregar Ambiente</h4>
+					
+					{% csrf_token %}
+						{{form.as_p}}
+				
+
+				</div>
+				<div class="modal-footer">
+				<a href="#!"  class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+			
+
+				<button class="btn waves-effect waves-light modal-close" type="submit" name="action">Agregar
+				<i class="material-icons right">send</i>
+				</button>
+				</form>	
+				</div>
+			</div>
+
+		</div>
+		
+		
+	</div>
+
+{%endblock%}
+
+{%block section_2%}
+	<div class="section row container">
+		<h2>Agregar Ambientes</h2>
+			
+	</div>
+
+{%endblock%}
+
+
+
+
+
+
+
+
+{%block scrip_text%}
+	<script type="text/javascript">
+		$(document).ready(function(){
+    				$('.sidenav').sidenav();
+    				$('.tabs').tabs();
+    				$('.modal').modal();
+    				});
+	</script>
+	
+{%endblock%}

@@ -1,0 +1,82 @@
+{%extends 'eventos/index.html'%}
+{%block title%}Gestionar Actividad{%endblock%}
+
+{%block section_1%}
+	<div class="section row container">
+		<h2>Actividades Creadas</h2>
+		<div class="col s9">
+			<table class="striped">
+				<thead>
+					<tr>
+						<th>Nombre de Actividad</th>
+						<th>Ambiente</th>
+						<th>Fecha</th>
+						<th>Hora de Inicio</th>
+						<th>Hora de Cierre</th>
+					</tr>
+				</thead>
+				<tbody>
+					{%for actividad in evento.actividad_set.all%}
+					<tr>
+						<td>{{actividad.nombre}}</td>
+						<td>{{actividad.ambiente}}</td>
+						<td>{{actividad.fecha}} </td>
+						<td>{{actividad.hora_inicio}} </td>	
+						<td>{{actividad.hora_fin}} </td>			
+					</tr>
+					{%endfor%}
+				</tbody>
+			</table>
+		</div>
+			<div class="col s3 center-align">
+				<div class="section">
+					<!-- Modal Trigger -->
+					<a href="#modal_AgregarActividad" class="waves-effect waves-light btn-large modal-trigger center-align"><i class="material-icons right">add</i>Agregar</a>
+				</div>
+
+				<div class="section">
+						<!-- Modal Trigger -->
+					<a href="" class="waves-effect waves-light btn-large center-align"><i class="material-icons right">build</i>Modificar</a>
+
+				</div>
+			</div>
+		
+			<!-- Modal Structure Agregar Actividad -->
+				<div id="modal_AgregarActividad" class="modal">
+					<form action="" method="post">
+					{% csrf_token %}
+					<div class="modal-content">
+						{{form.as_p}}
+					</div>
+					<div class="modal-footer">
+						<input type="submit" value="Agregar" class="modal-close waves-effect waves-green btn-flat">
+					</div>
+					</form>
+				</div>
+		</div>
+	</div>
+{%endblock%}
+{%block section_2%}
+
+
+{%endblock%}
+
+
+{%block scrip_text%}
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+		    $('.sidenav').sidenav();
+		    $('.modal').modal();
+		    $('input.autocomplete').autocomplete({
+		      data: {
+		        {%for ambiente in evento.ambiente_set.all%}
+		        	"{{ambiente.nombre}}":null,
+		        {%endfor%}
+		        
+		      },
+		    });
+		  });
+	</script>
+
+{%endblock%}

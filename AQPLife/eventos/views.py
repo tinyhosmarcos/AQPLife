@@ -85,7 +85,7 @@ class CrearEventoDetailView(DetailView):
 		return get_object_or_404(Profile,user=_id)
 
 	def get(self, request, *args, **kwargs):
-		form 			=CrearEventoForm()
+		form 								=CrearEventoForm()
 		self.context['form']				=form
 		return render(request, self.template_name,self.context )
 
@@ -108,30 +108,49 @@ class Gestionar_MaterialDetailView(DetailView):
 class Gestionar_AmbienteDetailView(DetailView):
 	template_name		='eventos/gestionar_ambiente.html'
 	context 			={
-
 	}
-	def  get_object(self):
-		_id=self.kwargs.get("evento_id")
-		return get_object_or_404(Evento,id=_id)
+	
+	def get(self, request, *args, **kwargs):
+		evento= Evento.objects.get(pk=self.kwargs.get("evento_id"))
+		self.context['evento']				=evento
+		form 								=CrearAmbienteForm()
+		form.fields['evento'].initial		=evento.id
+		self.context['form']				=form
+		return render(request, self.template_name,self.context )
+
+	def post(self, request, *args, **kwargs):
+		form  			= CrearAmbienteForm(request.POST)
+		evento= Evento.objects.get(pk=self.kwargs.get("evento_id"))	
+		self.context['evento']				=evento
+		if form.is_valid():
+			ambiente 		=form.save();
+		form 								=CrearAmbienteForm()
+		self.context['form']				=form
+		return render(request, self.template_name,self.context)
+
 
 class Gestionar_ActividadDetailView(DetailView):
 	template_name		='eventos/gestionar_actividad.html'
 	context 			={
 
 	}
-	def  get_object(self):
-		_id=self.kwargs.get("evento_id")
-		return get_object_or_404(Evento,id=_id)
+	def get(self, request, *args, **kwargs):
+		evento= Evento.objects.get(pk=self.kwargs.get("evento_id"))
+		self.context['evento']				=evento
+		form 								=CrearActividadForm()
+		form.fields['evento'].initial		=evento.id
+		self.context['form']				=form
+		return render(request, self.template_name,self.context )
 
-
-
-
-
-	#context={
-	#}
-	#def gest_object():
-	#	pass
-
-	#def get(self,request,*args,**kwargs):
-	#	
-	#	return render(request,self.template_name,self.context)
+	def post(self, request, *args, **kwargs):
+		form  			= CrearActividadForm(request.POST)
+		evento= Evento.objects.get(pk=self.kwargs.get("evento_id"))	
+		self.context['evento']				=evento
+		
+		if form.is_valid():
+			print("entro")
+			ambiente 		=form.save();
+		form 								=CrearActividadForm()
+		form.fields['evento'].initial		=evento.id
+		self.context['form']				=form
+		return render(request, self.template_name,self.context)
