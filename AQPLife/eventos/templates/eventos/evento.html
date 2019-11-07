@@ -30,18 +30,24 @@
 			</table>
 		</div>
 		<div class="col s3 center-align">
-			<div class="section">
-				<a href="{%url 'eventos:modificar_evento' object.id%}" class="waves-effect waves-light btn-large center-align"><i class="material-icons right">assignment</i>Modificar</a>
-			</div>
+			
 			<div class="section">
 				<a href="{%url 'eventos:gestionar_ambiente' object.id%}" class="waves-effect waves-light btn-large center-align"><i class="material-icons right">airline_seat_legroom_normal</i>Ambientes</a>
 			</div>
 			<div class="section">
 				<a href="{%url 'eventos:gestionar_material' object.id%}" class="waves-effect waves-light btn-large center-align"><i class="material-icons right">border_color</i>Materiales</a>		
 			</div>
+			<div class="section">
+				<a href="{%url 'eventos:gestionar_paquete' object.id%}" class="waves-effect waves-light btn-large center-align"><i class="material-icons right">border_color</i>Paquetes</a>		
+			</div>
 			
 		</div>
+	<div class="col s9 center-align">
+		<div class="section">
+				<a href="{%url 'eventos:modificar_evento' object.id%}" class="waves-effect waves-light btn-large center-align"><i class="material-icons right">assignment</i>Modificar</a>
+			</div>
 		
+	</div>
 	</div>
 {%endblock%}
 
@@ -49,6 +55,7 @@
 	
 	<div class="section container">
 		<h2>Actividades</h2>
+			
 		<div class="section">
 				<a href="{%url 'eventos:gestionar_actividad' object.id%}" class="waves-effect waves-light btn-large center-align"><i class="material-icons right">art_track</i>Gestionar</a>		
 			</div>

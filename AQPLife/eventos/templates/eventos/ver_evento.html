@@ -1,0 +1,85 @@
+{%extends 'eventos/index.html'%}
+
+{%block title%}Evento: {{evento.nombre}}{%endblock%}
+
+{%block section_1%}
+	<div class="section container row">
+		<div class="col s12 center-align">
+			<h2> {{evento.nombre}}</h2>
+		</div>
+
+		<div class="col s6 left-align">
+			<ul>
+				<li>Fecha de Inicio</li>
+				<li>Fecha de Fin</li>
+			</ul>
+			<ul class="collection with-header ">
+				<li class="collection-header"><h6>Descripción</h6></li>
+				<li class="collection-item"><div>{{evento.fecha_inicio}}<a href="#!" class="secondary-content"><i class="material-icons">date_range</i></a></div></li>
+				<li class="collection-item"><div>{{evento.fecha_fin}}<a href="#!" class="secondary-content"><i class="material-icons">date_range</i></a></div></li>
+				<li class="collection-header"><h6>Actividades</h6></li>
+					{%for actividad in evento.actividad_set.all%}
+						<li class="collection-item"><div>{{actividad.nombre}}<a href="#!" class="secondary-content"><i class="material-icons">local_activity</i></a></div></li>
+					{%endfor%}
+			
+			</ul>	
+
+		</div>
+		<div class="row col s6 center-align  ">
+			<div class="section col s12">
+					<img class="col s12"  src="https://materializecss.com/images/sample-1.jpg">
+				
+			</div>
+			<div class="divider col s12"></div>
+
+			<div class="section col s12">
+				<ul>
+				<li><a class="waves-effect waves-light btn">Pre-Inscribirse</a> <a class="waves-effect waves-light btn">Inscribirse</a></li>
+				
+				</ul>
+			</div>
+			<div class="divider col s12"></div>
+			<div class="section col s12">
+			
+		
+		<ul class="collapsible popout">
+			
+			<h5> Paquetes</h5>
+			{%for paquete in evento.paquete_set.all%}
+				<li>
+					<div class="collapsible-header"><i class="material-icons">confirmation_number
+					</i>{{paquete.nombre}}</div>
+					<div class="collapsible-body row">
+						<h6 class="col s6">Descripcion</h6>
+						<span class="col s12 left-align">
+							{{paquete.descripcion}}
+						</span>
+						<h6 class="col s6">Costo</h6><a class="col s6 waves-effect waves-light btn">{{paquete.costo}} $</a>
+
+					</div>	
+				</li>				
+			{%endfor%}
+			
+		</ul>
+        
+			</div>
+					
+		</div>
+		
+	</div>
+{%endblock%}
+
+
+
+{%block scrip_text%}
+	<script type="text/javascript">
+		$(document).ready(function(){
+    				$('.sidenav').sidenav();
+    				$('.tabs').tabs();
+    				$('.modal').modal();
+    				$('.collapsible').collapsible();
+    				});
+	</script>
+	
+{%endblock%}
+

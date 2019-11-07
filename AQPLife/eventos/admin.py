@@ -17,5 +17,5 @@ admin.site.register(CategoriaPersonal)
 admin.site.register(Transaccion)
 admin.site.register(Expositor)
 
-
+admin.site.register(PaqueteActividad)
 admin.site.register(Asistencia)

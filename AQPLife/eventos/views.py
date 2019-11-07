@@ -2,16 +2,18 @@ from django.shortcuts import render, get_object_or_404
 from .models import *
 from .forms import *
 # Create your views here.
+from django.urls import reverse
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views import View
 from django.views.generic.detail import DetailView
+from .views_user import *
 
 class IndexView(View):
-	eventos_list  = Evento.objects.all()
+	list_eventos  = Evento.objects.all()
 	template_name = 'eventos/index.html'
 	context={
-		'eventos_list':eventos_list,
+		'eventos_list':list_eventos,
 
 	}
 	def get(self, request, *args, **kwargs):
@@ -51,28 +53,21 @@ class ModificarEventoDetailView(DetailView):
 		return get_object_or_404(Evento,id=_id)
 		
 	def get(self, request, *args, **kwargs):
-		form 			=ModificarEventoForm()
-		evento_tmp 		=Evento.objects.get(id=self.kwargs.get("evento_id"))
-		form.fields['nombre'].initial		=evento_tmp.nombre
-		form.fields['tipo_evento'].initial	=evento_tmp.tipo_evento
-		form.fields['fecha_inicio'].initial	=evento_tmp.fecha_inicio
-		form.fields['fecha_fin'].initial	=evento_tmp.fecha_fin
+		
+		evento_tmp 		=get_object_or_404(Evento,id=self.kwargs.get("evento_id"))
+		form 			=ModificarEventoForm(request.POST or None, instance=evento_tmp)
 		self.context['form']				=form
 		return render(request, self.template_name,self.context )
 
 	def post(self, request, *args, **kwargs):
-		form = ModificarEventoForm(request.POST)
+		evento_tmp 		=get_object_or_404(Evento,id=self.kwargs.get("evento_id"))
+		form 			=ModificarEventoForm(request.POST or None, instance=evento_tmp)
 		if form.is_valid():
-			data=request.POST.copy()
-			self.object 				=self.get_object()
-			self.object.nombre 			=data.get('nombre')
-			self.object.tipo_evento 	=data.get('tipo_evento')
-			self.object.fecha_inicio 	=data.get('fecha_inicio')
-			self.object.fecha_fin 		=data.get('fecha_fin')
-			print(data.get('nombre'))
-			self.object.save()
-			#form=ModificarEventoForm()
-			#self.context['form']				=form
+			print("entro post")
+			form.save()
+			return redirect('eventos:evento',evento_id=self.kwargs.get("evento_id"))
+		evento_tmp 		=get_object_or_404(Evento,id=self.kwargs.get("evento_id"))
+		form 			=ModificarEventoForm(request.POST or None, instance=evento_tmp)
 		return render(request, self.template_name,self.context)
 	
 class CrearEventoDetailView(DetailView):
@@ -147,10 +142,28 @@ class Gestionar_ActividadDetailView(DetailView):
 		evento= Evento.objects.get(pk=self.kwargs.get("evento_id"))	
 		self.context['evento']				=evento
 		
+		print(form.data['ambiente'])
 		if form.is_valid():
+			
 			print("entro")
-			ambiente 		=form.save();
+			form.save()
 		form 								=CrearActividadForm()
 		form.fields['evento'].initial		=evento.id
 		self.context['form']				=form
 		return render(request, self.template_name,self.context)
+
+class Gestionar_PaqueteDetailView(DetailView):
+	"""docstring for Gestionar_paqueteDetailView"""
+	template_name		='eventos/gestionar_paquete.html'
+	context 			={
+
+	}
+	def get(self, request, *args, **kwargs):
+		evento 						=	Evento.objects.get(pk=self.kwargs.get("evento_id"))
+		self.context['evento']		=	evento
+		return render(request,self.template_name,self.context)
+
+
+
+	def post(self, request, *args, **kwargs):
+		pass

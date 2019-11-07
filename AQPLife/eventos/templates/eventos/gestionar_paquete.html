@@ -1,0 +1,20 @@
+{%extends 'eventos/index.html'%}
+
+{%block title%}Paquetes-{{evento.nombre}}{%endblock%}
+{%block section_1%}
+	<div class="section row container">
+		{%for paquete in evento.paquete_set.all%}
+		<div class="col s6">
+			<p>{{paquete.nombre}}</p>
+			<p>{{paquete.descripcion}}</p>
+			<p>{{paquete.costo}}</p>
+			<p>{{paquete.actividad}}</p>			
+		</div>
+		{%endfor%}
+	</div>
+
+
+{%endblock%}
+{%block section_2%}
+	
+{%endblock%}

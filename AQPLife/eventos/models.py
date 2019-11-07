@@ -14,7 +14,7 @@ class Profile(models.Model):
 		return str(self.user.get_username())
 
 class Evento(models.Model):
-	nombre				=models.CharField(max_length=30)
+	nombre				=models.CharField(unique=True,max_length=30)
 	tipo_evento			=models.CharField(max_length=20)
 	fecha_inicio		=models.DateField(default=date.today)
 	fecha_fin			=models.DateField(default=date.today)
@@ -39,9 +39,9 @@ class Personal(models.Model):
 
 
 class Ambiente(models.Model):
-	
+	nombre				=models.CharField(primary_key=True,max_length=30)
 	evento				=models.ForeignKey(Evento,on_delete=models.CASCADE)
-	nombre				=models.CharField(max_length=30)
+	
 	ubicacion			=models.CharField(max_length=30)
 	capacidad			=models.IntegerField(default=0)
 	def __str__(self):
@@ -50,7 +50,7 @@ class Ambiente(models.Model):
 class Actividad(models.Model):	
 	evento 				=models.ForeignKey(Evento,on_delete=models.CASCADE)
 	ambiente  			=models.ForeignKey(Ambiente,blank=True,on_delete=models.CASCADE)
-	nombre				=models.CharField(max_length=20)
+	nombre				=models.CharField(unique=True,max_length=20)
 	fecha 				=models.DateField(default=date.today)
 	hora_inicio			=models.TimeField(blank=True)
 	hora_fin			=models.TimeField(blank=True)
@@ -59,7 +59,7 @@ class Actividad(models.Model):
 
 class MaterialActividad(models.Model):
 	actividad 			=models.ForeignKey(Actividad,on_delete=models.CASCADE)
-	nombre 				=models.CharField(max_length=20)
+	nombre 				=models.CharField(unique=True,max_length=20)
 	cantidad 			=models.IntegerField(default=0)
 	stock				=models.IntegerField(default=0)
 	def __str__(self):
@@ -67,7 +67,7 @@ class MaterialActividad(models.Model):
 
 class MaterialAmbiente(models.Model):
 	ambiente 			=models.ForeignKey(Ambiente,on_delete=models.CASCADE)
-	nombre 				=models.CharField(max_length=20)
+	nombre 				=models.CharField(unique=True,max_length=20)
 	cantidad			=models.IntegerField(default=0)
 	stock 				=models.IntegerField(default=0)
 	def __str__(self):
@@ -75,7 +75,7 @@ class MaterialAmbiente(models.Model):
 
 class Paquete(models.Model):
 	evento 				=models.ForeignKey(Evento,on_delete=models.CASCADE)
-	nombre 				=models.CharField(max_length=30)
+	nombre 				=models.CharField(unique=True,max_length=30)
 	descripcion			=models.CharField(max_length=100)
 	costo				=models.FloatField(default=0)
 	actividad 			=models.ManyToManyField(Actividad)
@@ -100,7 +100,9 @@ class Inscrito(models.Model):
 	def __str__(self):
 		return self.profile.categoria_usuario
 
-
+class PaqueteActividad(models.Model):
+	id_paquete			=models.ForeignKey(Paquete,on_delete=models.CASCADE)
+	id_actividad		=models.ForeignKey(Actividad,on_delete=models.CASCADE)
 class TipoAsistencia(models.Model):
 	nombre 				=models.CharField(max_length=20)
 	def __str__(self):
@@ -118,7 +120,7 @@ class Asistencia(models.Model):
 	fecha  				=models.DateField(default=date.today)
 	hora 				=models.TimeField(default=datetime.now().time())
 	def __str__(self):
-		return self.tipoAsistencia
+		return self.inscrito
 
 
 

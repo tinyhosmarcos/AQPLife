@@ -42,13 +42,24 @@
 
 
 	{% block nav%}
+	<!-- Dropdown Structure -->
+	<ul id="dropdown-MisEventos" class="dropdown-content">
+	<li><a href="#!">Creados</a></li>
+	<li class="divider"></li>
+	<li><a href="{%url 'eventos:gestionar_evento' user.id %}">Inscritos</a></li>
+	</ul>
+	<!-- Dropdown Structure -->
 		<nav>
 
 		<div class="nav-wrapper">
 		  <a href="{%url 'eventos:index_2'%}" class=" brand-logo">AqpLife</a>
 		  <ul id="nav-mobile" class="right hide-on-med-and-down">
-		    <li><a href="sass.html">Eventos</a></li>
-		    <li><a href="badges.html">Contactanos</a></li>
+
+		  	<!-- Dropdown Trigger -->
+		    <li><a class="dropdown-trigger" href="#!" data-target="dropdown-MisEventos">Mis Eventos</a></li>
+		    <!-- Dropdown Trigger -->	
+
+		    <li><a href="">Contactanos</a></li>
 		    <li><a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons right">account_circle</i>{{user}}</a></li>
 
 		  </ul>
@@ -67,10 +78,10 @@
 			{%block eventos_list%}
 
 			{%for evento in eventos_list%}
-				<div class="carousel-item red white-text" >
+				<div class="carousel-item red white-text" href="#lel!">
 					<h2>{{evento.nombre}}</h2>
-					<a href="{%url 'eventos:evento' evento.id%}">Link</a>
-					<p class="white-text" >{{evento.tipo_evento}}</p>
+					<a href="{%url 'eventos:ver_evento' evento.id%}">Link</a>
+					<p class="white-text">{{evento.tipo_evento}}</p>
 				</div>
 			{%endfor%}
 
@@ -153,6 +164,7 @@
 			
 
 			$(document).ready(function(){
+					$(".dropdown-trigger").dropdown();
     				$('.sidenav').sidenav();
     				$('.tabs').tabs();
     				$('.carousel.carousel-slider').carousel({

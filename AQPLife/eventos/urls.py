@@ -10,4 +10,7 @@ urlpatterns = [
 	path('<int:evento_id>/gestionar_actividad',views.Gestionar_ActividadDetailView.as_view(),name='gestionar_actividad'),
 	path('<int:evento_id>/gestionar_ambiente',views.Gestionar_AmbienteDetailView.as_view(),name='gestionar_ambiente'),
 	path('<int:evento_id>/gestionar_material',views.Gestionar_MaterialDetailView.as_view(),name='gestionar_material'),
+	path('<int:evento_id>/gestionar_paquete',views.Gestionar_PaqueteDetailView.as_view(),name='gestionar_paquete'),
+	path('<int:evento_id>/ver_evento',views.Ver_EventoDetailView.as_view(),name='ver_evento'),
+
 ]
