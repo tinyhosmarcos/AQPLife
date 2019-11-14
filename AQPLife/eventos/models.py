@@ -112,6 +112,9 @@ class Expositor(models.Model):
 	nombre 				=models.CharField(max_length=20)
 	apellido 			=models.CharField(max_length=30)
 	actividad 			=models.ManyToManyField(Actividad)
+	def __str__(self):
+		return self.nombre
+
 
 
 class Asistencia(models.Model):

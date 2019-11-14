@@ -3,18 +3,77 @@
 {%block title%}Paquetes-{{evento.nombre}}{%endblock%}
 {%block section_1%}
 	<div class="section row container">
-		{%for paquete in evento.paquete_set.all%}
 		<div class="col s6">
-			<p>{{paquete.nombre}}</p>
-			<p>{{paquete.descripcion}}</p>
-			<p>{{paquete.costo}}</p>
-			<p>{{paquete.actividad}}</p>			
+			<ul class="collapsible popout">
+			
+			<h5 class="center-align"> Paquetes Disponibles</h5>
+			{%for paquete in evento.paquete_set.all%}
+
+				<li>
+					<div class="collapsible-header">
+						<i class="material-icons">confirmation_number
+					</i>{{paquete.nombre}}
+
+					  <!-- Modal Trigger -->
+						<a class="modal-trigger" href="#delete" style="margin-left: 250px;" ><i class="material-icons">delete
+						<!-- Modal Structure -->
+				  
+					</i></a>
+						<div id="delete" class="modal">
+				    <div class="modal-content">
+				      <h4>Modal Header</h4>
+				      <p>A bunch of text</p>
+				    </div>
+				    <div class="modal-footer">
+				      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+				    </div>
+				  </div>		
+				</div>
+
+					<div class="collapsible-body row">
+						<h6 class="col s6">Descripcion</h6>
+						<span class="col s12 left-align">
+							{{paquete.descripcion}}
+						</span>
+						<h6 class="col s6">Costo</h6><a class="col s6 waves-effect waves-light btn">{{paquete.costo}} $</a>
+
+					</div>	
+				</li>				
+			{%endfor%}
+			
+		</ul>
 		</div>
-		{%endfor%}
+		<div class="col s6" >
+			<h5 class="center-align">Crear Paquete</h5>
+			<form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Agregar">
+                </form>
+		</div>
+
+
 	</div>
+
 
 
 {%endblock%}
 {%block section_2%}
 	
 {%endblock%}
+{%block section_3%}
+	
+{%endblock%}
+{%block scrip_text%}
+	<script type="text/javascript">
+		$(document).ready(function(){
+					$(".dropdown-trigger").dropdown();
+    				$('.sidenav').sidenav();
+    				$('.tabs').tabs();
+    				$('.modal').modal();
+    				$('.collapsible').collapsible();
+    				});
+	</script>
+	
+{%endblock%}
+

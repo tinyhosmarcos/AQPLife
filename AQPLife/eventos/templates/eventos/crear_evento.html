@@ -4,13 +4,19 @@
 
 {%block section_1%}
 	<div class="section container row">
-		<h2> Modificar Datos </h2>
-
-				<form action="" method="post">
-		    {% csrf_token %}
-		    {{ form.as_p }}
-		    <input type="submit" value="Agregar">
-		</form>
+		<h2> Crear Evento </h2>
+        <div class="col s6">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Agregar" id="CrearEvento">
+                </form>
+        </div>
+        <div class="section col s6">
+                    <img class="col s12"  src="https://materializecss.com/images/sample-1.jpg">
+                
+            </div>
+                
 			{% if form.errors %}
     {% for field in form %}
         {% for error in field.errors %}

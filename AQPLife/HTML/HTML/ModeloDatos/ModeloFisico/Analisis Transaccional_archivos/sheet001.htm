@@ -1,0 +1,874 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 15">
+<link id=Main-File rel=Main-File href="../Analisis%20Transaccional.htm">
+<link rel=File-List href=filelist.xml>
+<link rel=Stylesheet href=stylesheet.css>
+<style>
+<!--table
+	{mso-displayed-decimal-separator:"\.";
+	mso-displayed-thousand-separator:"\,";}
+@page
+	{margin:.75in .7in .75in .7in;
+	mso-header-margin:.3in;
+	mso-footer-margin:.3in;}
+-->
+</style>
+<![if !supportTabStrip]><script language="JavaScript">
+<!--
+function fnUpdateTabs()
+ {
+  if (parent.window.g_iIEVer>=4) {
+   if (parent.document.readyState=="complete"
+    && parent.frames['frTabs'].document.readyState=="complete")
+   parent.fnSetActiveSheet(0);
+  else
+   window.setTimeout("fnUpdateTabs();",150);
+ }
+}
+
+if (window.name!="frSheet")
+ window.location.replace("../Analisis%20Transaccional.htm");
+else
+ fnUpdateTabs();
+//-->
+</script>
+<![endif]>
+</head>
+
+<body link="#1155CC" vlink="#1155CC">
+
+<table border=0 cellpadding=0 cellspacing=0 width=2112 style='border-collapse:
+ collapse;table-layout:fixed;width:1586pt'>
+ <col width=55 style='mso-width-source:userset;mso-width-alt:2011;width:41pt'>
+ <col width=219 style='mso-width-source:userset;mso-width-alt:8009;width:164pt'>
+ <col width=59 style='mso-width-source:userset;mso-width-alt:2157;width:44pt'>
+ <col width=35 style='mso-width-source:userset;mso-width-alt:1280;width:26pt'>
+ <col width=65 style='mso-width-source:userset;mso-width-alt:2377;width:49pt'>
+ <col width=68 style='mso-width-source:userset;mso-width-alt:2486;width:51pt'>
+ <col width=99 style='mso-width-source:userset;mso-width-alt:3620;width:74pt'>
+ <col width=50 style='mso-width-source:userset;mso-width-alt:1828;width:38pt'>
+ <col width=55 style='mso-width-source:userset;mso-width-alt:2011;width:41pt'>
+ <col width=59 style='mso-width-source:userset;mso-width-alt:2157;width:44pt'>
+ <col width=68 style='mso-width-source:userset;mso-width-alt:2486;width:51pt'>
+ <col width=60 style='mso-width-source:userset;mso-width-alt:2194;width:45pt'>
+ <col width=69 style='mso-width-source:userset;mso-width-alt:2523;width:52pt'>
+ <col width=79 style='mso-width-source:userset;mso-width-alt:2889;width:59pt'>
+ <col width=63 style='mso-width-source:userset;mso-width-alt:2304;width:47pt'>
+ <col width=62 span=2 style='mso-width-source:userset;mso-width-alt:2267;
+ width:47pt'>
+ <col width=54 style='mso-width-source:userset;mso-width-alt:1974;width:41pt'>
+ <col width=63 style='mso-width-source:userset;mso-width-alt:2304;width:47pt'>
+ <col width=61 style='mso-width-source:userset;mso-width-alt:2230;width:46pt'>
+ <col width=101 span=7 style='width:76pt'>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 width=55 style='height:15.75pt;width:41pt'></td>
+  <td width=219 style='width:164pt'></td>
+  <td width=59 style='width:44pt'></td>
+  <td width=35 style='width:26pt'></td>
+  <td width=65 style='width:49pt'></td>
+  <td width=68 style='width:51pt'></td>
+  <td width=99 style='width:74pt'></td>
+  <td width=50 style='width:38pt'></td>
+  <td width=55 style='width:41pt'></td>
+  <td width=59 style='width:44pt'></td>
+  <td width=68 style='width:51pt'></td>
+  <td width=60 style='width:45pt'></td>
+  <td width=69 style='width:52pt'></td>
+  <td width=79 style='width:59pt'></td>
+  <td width=63 style='width:47pt'></td>
+  <td width=62 style='width:47pt'></td>
+  <td width=62 style='width:47pt'></td>
+  <td width=54 style='width:41pt'></td>
+  <td width=63 style='width:47pt'></td>
+  <td width=61 style='width:46pt'></td>
+  <td width=101 style='width:76pt'></td>
+  <td width=101 style='width:76pt'></td>
+  <td width=101 style='width:76pt'></td>
+  <td width=101 style='width:76pt'></td>
+  <td width=101 style='width:76pt'></td>
+  <td width=101 style='width:76pt'></td>
+  <td width=101 style='width:76pt'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 class=xl65 style='height:12.75pt'></td>
+  <td rowspan=2 class=xl81 style='border-bottom:.5pt solid black'>TRANSACCIONES</td>
+  <td colspan=18 class=xl78 style='border-right:.5pt solid black;border-left:
+  none'>TABLAS</td>
+  <td rowspan=2 class=xl83 width=101 style='border-bottom:.5pt solid black;
+  width:76pt'># Tablas por Transacción</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=34 style='height:25.5pt'>
+  <td height=34 class=xl65 style='height:25.5pt'></td>
+  <td class=xl66 style='border-top:none;border-left:none'>Usuario<span
+  style='mso-spacerun:yes'> </span></td>
+  <td class=xl66 style='border-top:none;border-left:none'>Perfil<span
+  style='mso-spacerun:yes'> </span></td>
+  <td class=xl66 style='border-top:none;border-left:none'>Personal</td>
+  <td class=xl67 width=68 style='border-top:none;border-left:none;width:51pt'>Categoria
+  Personal</td>
+  <td class=xl67 width=99 style='border-top:none;border-left:none;width:74pt'>Categoria
+  PersonalEvento</td>
+  <td class=xl67 width=50 style='border-top:none;border-left:none;width:38pt'>Evento</td>
+  <td class=xl67 width=55 style='border-top:none;border-left:none;width:41pt'>Inscrito</td>
+  <td class=xl67 width=59 style='border-top:none;border-left:none;width:44pt'>Paquete</td>
+  <td class=xl67 width=68 style='border-top:none;border-left:none;width:51pt'>Paquete
+  Actividad</td>
+  <td class=xl67 width=60 style='border-top:none;border-left:none;width:45pt'>Actividad</td>
+  <td class=xl67 width=69 style='border-top:none;border-left:none;width:52pt'>Asistencia</td>
+  <td class=xl67 width=79 style='border-top:none;border-left:none;width:59pt'>Transaccion</td>
+  <td class=xl67 width=63 style='border-top:none;border-left:none;width:47pt'>Ambiente</td>
+  <td class=xl67 width=62 style='border-top:none;border-left:none;width:47pt'>Expositor</td>
+  <td class=xl67 width=62 style='border-top:none;border-left:none;width:47pt'>Expositor
+  Actividad</td>
+  <td class=xl67 width=54 style='border-top:none;border-left:none;width:41pt'>Material</td>
+  <td class=xl67 width=63 style='border-top:none;border-left:none;width:47pt'>Material
+  Ambiente</td>
+  <td class=xl67 width=61 style='border-top:none;border-left:none;width:46pt'>Material
+  Actividad</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 class=xl68 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Crear evento</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl71 align=right style='border-top:none;border-left:none'>10</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Modificar evento</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl71 align=right style='border-top:none;border-left:none'>10</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Eliminar evento</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl71 align=right style='border-top:none;border-left:none'>10</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Adaptar evento</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl71 align=right style='border-top:none;border-left:none'>10</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Crear ambiente</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72 align=right style='border-top:none;border-left:none'>3</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Modificar ambiente</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl72 align=right style='border-top:none;border-left:none'>4</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Crear actividad</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl72 align=right style='border-top:none;border-left:none'>7</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Modificar actividad</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl72 align=right style='border-top:none;border-left:none'>7</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Añadir expositor</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72 align=right style='border-top:none;border-left:none'>2</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Eliminar expositor</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72 align=right style='border-top:none;border-left:none'>2</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Crear materiales</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72 align=right style='border-top:none;border-left:none'>1</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Modificar material</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72 align=right style='border-top:none;border-left:none'>1</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Registrarse e iniciar Sesión</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72 align=right style='border-top:none;border-left:none'>2</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Preinscripción</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72 align=right style='border-top:none;border-left:none'>1</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Inscripción</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72 align=right style='border-top:none;border-left:none'>1</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Generación de codigo participante</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72 align=right style='border-top:none;border-left:none'>3</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Ingreso a caja</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72 align=right style='border-top:none;border-left:none'>2</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Visualizar transacciones</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72 align=right style='border-top:none;border-left:none'>1</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Registrar Egreso</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72 align=right style='border-top:none;border-left:none'>4</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Tomo de asistencia</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72 align=right style='border-top:none;border-left:none'>5</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Registrar entrega material, actividad</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl72 align=right style='border-top:none;border-left:none'>2</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Reporte cantidad inscritos</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72 align=right style='border-top:none;border-left:none'>1</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Reporte asistencia</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72 align=right style='border-top:none;border-left:none'>1</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Generar credenciales</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72 align=right style='border-top:none;border-left:none'>3</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Generar certificado</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72 align=right style='border-top:none;border-left:none'>5</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Cierre de caja</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72 align=right style='border-top:none;border-left:none'>1</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Gestionar Comisión</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72 align=right style='border-top:none;border-left:none'>2</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl69 style='border-top:none'>Agregar personal</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>x</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl70 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72 align=right style='border-top:none;border-left:none'>3</td>
+  <td colspan=6 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=29 style='mso-height-source:userset;height:21.75pt'>
+  <td height=29 class=xl73 style='height:21.75pt'></td>
+  <td class=xl74 style='border-top:none'># Transacciones por Tabla</td>
+  <td class=xl75 align=right style='border-top:none;border-left:none'>6</td>
+  <td class=xl75 align=right style='border-top:none;border-left:none'>6</td>
+  <td class=xl75 align=right style='border-top:none;border-left:none'>2</td>
+  <td class=xl75 align=right style='border-top:none;border-left:none'>2</td>
+  <td class=xl75 align=right style='border-top:none;border-left:none'>2</td>
+  <td class=xl75 align=right style='border-top:none;border-left:none'>4</td>
+  <td class=xl76 align=right style='border-top:none;border-left:none'>8</td>
+  <td class=xl75 align=right style='border-top:none;border-left:none'>4</td>
+  <td class=xl75 align=right style='border-top:none;border-left:none'>4</td>
+  <td class=xl75 align=right style='border-top:none;border-left:none'>8</td>
+  <td class=xl75 align=right style='border-top:none;border-left:none'>3</td>
+  <td class=xl75 align=right style='border-top:none;border-left:none'>4</td>
+  <td class=xl76 align=right style='border-top:none;border-left:none'>8</td>
+  <td class=xl75 align=right style='border-top:none;border-left:none'>8</td>
+  <td class=xl75 align=right style='border-top:none;border-left:none'>8</td>
+  <td class=xl76 align=right style='border-top:none;border-left:none'>10</td>
+  <td class=xl76 align=right style='border-top:none;border-left:none'>9</td>
+  <td class=xl75 align=right style='border-top:none;border-left:none'>8</td>
+  <td class=xl77 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl73></td>
+  <td class=xl73></td>
+  <td class=xl73></td>
+  <td class=xl73></td>
+  <td class=xl73></td>
+  <td class=xl73></td>
+ </tr>
+ <![if supportMisalignedColumns]>
+ <tr height=0 style='display:none'>
+  <td width=55 style='width:41pt'></td>
+  <td width=219 style='width:164pt'></td>
+  <td width=59 style='width:44pt'></td>
+  <td width=35 style='width:26pt'></td>
+  <td width=65 style='width:49pt'></td>
+  <td width=68 style='width:51pt'></td>
+  <td width=99 style='width:74pt'></td>
+  <td width=50 style='width:38pt'></td>
+  <td width=55 style='width:41pt'></td>
+  <td width=59 style='width:44pt'></td>
+  <td width=68 style='width:51pt'></td>
+  <td width=60 style='width:45pt'></td>
+  <td width=69 style='width:52pt'></td>
+  <td width=79 style='width:59pt'></td>
+  <td width=63 style='width:47pt'></td>
+  <td width=62 style='width:47pt'></td>
+  <td width=62 style='width:47pt'></td>
+  <td width=54 style='width:41pt'></td>
+  <td width=63 style='width:47pt'></td>
+  <td width=61 style='width:46pt'></td>
+  <td width=101 style='width:76pt'></td>
+  <td width=101 style='width:76pt'></td>
+  <td width=101 style='width:76pt'></td>
+  <td width=101 style='width:76pt'></td>
+  <td width=101 style='width:76pt'></td>
+  <td width=101 style='width:76pt'></td>
+  <td width=101 style='width:76pt'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</body>
+
+</html>

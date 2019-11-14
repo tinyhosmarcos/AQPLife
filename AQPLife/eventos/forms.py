@@ -1,6 +1,10 @@
 from django import forms
 from .models import *
 
+
+
+
+
 class CrearEventoForm(forms.ModelForm):
 	class Meta:
 		model=Evento
@@ -83,4 +87,26 @@ class CrearActividadForm(forms.ModelForm):
 			'fecha':forms.TextInput(attrs={'class':'input'}),
 			'hora_inicio':forms.TextInput(attrs={'class':'input'}),
 			'hora_fin':forms.TextInput(attrs={'class':'input'})
+		}
+
+class CrearPaqueteForm(forms.ModelForm):
+	actividad= forms.ModelChoiceField(queryset = Actividad.objects.filter(evento=1),empty_label=None,required=False)
+
+	class Meta:
+		model=Paquete
+		fields=[
+			'evento',
+			'nombre',
+			'costo',
+			'descripcion',
+			'actividad'
+			
+		]
+		widgets={
+			'evento':forms.TextInput(attrs={'class':'input ', 'style':'display:none' ,'type':'hidden'}),
+			
+			'nombre':forms.TextInput(attrs={'class':'input'}),
+			'costo':forms.TextInput(attrs={'class':'input'}),
+			'descripcion':forms.TextInput(attrs={'class':'input'}),
+			#'actividad':forms.TextInput(attrs={'class':'input'})
 		}
