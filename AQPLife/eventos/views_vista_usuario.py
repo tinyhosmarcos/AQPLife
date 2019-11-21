@@ -15,7 +15,7 @@ class IndexView(View):
 
 	}
 	def get(self, request, *args, **kwargs):
-		list_eventos  = Evento.objects.all()
+		list_eventos  = Evento.objects.all().order_by('-id')[:5]
 		
 		self.context['eventos_list']=list_eventos
 		return render(request, self.template_name,self.context )

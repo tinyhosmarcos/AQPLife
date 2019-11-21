@@ -90,23 +90,26 @@ class CrearActividadForm(forms.ModelForm):
 		}
 
 class CrearPaqueteForm(forms.ModelForm):
-	actividad= forms.ModelChoiceField(queryset = Actividad.objects.filter(evento=1),empty_label=None,required=False)
+	actividad			= forms.ModelMultipleChoiceField(queryset = Actividad.objects.all())
 
+	
 	class Meta:
 		model=Paquete
 		fields=[
-			'evento',
-			'nombre',
-			'costo',
-			'descripcion',
-			'actividad'
-			
-		]
+				'evento',
+				'nombre',
+				'costo',
+				'actividad',
+				'descripcion'
+				
+			]
 		widgets={
 			'evento':forms.TextInput(attrs={'class':'input ', 'style':'display:none' ,'type':'hidden'}),
 			
-			'nombre':forms.TextInput(attrs={'class':'input'}),
-			'costo':forms.TextInput(attrs={'class':'input'}),
-			'descripcion':forms.TextInput(attrs={'class':'input'}),
-			#'actividad':forms.TextInput(attrs={'class':'input'})
 		}
+	def __init__(self,*args,**kwargs):
+		evento=kwargs.pop('instance_evento',None)
+		super(CrearPaqueteForm, self).__init__(*args, **kwargs)
+		if evento:
+			self.fields['evento'].initial=evento.id
+			self.fields['actividad'] = forms.ModelMultipleChoiceField(queryset=Actividad.objects.filter(evento=evento.id))

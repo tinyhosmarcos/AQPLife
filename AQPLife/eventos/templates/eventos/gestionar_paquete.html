@@ -11,14 +11,16 @@
 
 				<li>
 					<div class="collapsible-header">
-						<i class="material-icons">confirmation_number
-					</i>{{paquete.nombre}}
-
-					  <!-- Modal Trigger -->
-						<a class="modal-trigger" href="#delete" style="margin-left: 250px;" ><i class="material-icons">delete
-						<!-- Modal Structure -->
-				  
-					</i></a>
+						<i class="material-icons col s2">confirmation_number
+					</i><span class="col s8">{{paquete.nombre}}</span>
+					<!-- Modal Trigger -->
+						<a class="modal-trigger col s2" href="#delete"  >
+							<i class="material-icons">delete</i>
+						</a>
+				
+					  
+				
+						<!-- Modal Structure style="margin-left: 250px;"-->
 						<div id="delete" class="modal">
 				    <div class="modal-content">
 				      <h4>Modal Header</h4>
@@ -33,7 +35,7 @@
 					<div class="collapsible-body row">
 						<h6 class="col s6">Descripcion</h6>
 						<span class="col s12 left-align">
-							{{paquete.descripcion}}
+							{{paquete.descripcion}} <a href="">+info</a>
 						</span>
 						<h6 class="col s6">Costo</h6><a class="col s6 waves-effect waves-light btn">{{paquete.costo}} $</a>
 
@@ -59,7 +61,15 @@
 
 {%endblock%}
 {%block section_2%}
-	
+	<div class="input-field col s12">
+    <select>
+      <option value="" disabled selected>Choose your option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+    </select>
+    <label>Materialize Select</label>
+  </div>
 {%endblock%}
 {%block section_3%}
 	
@@ -72,6 +82,7 @@
     				$('.tabs').tabs();
     				$('.modal').modal();
     				$('.collapsible').collapsible();
+    				$('select').formSelect();
     				});
 	</script>
 	
