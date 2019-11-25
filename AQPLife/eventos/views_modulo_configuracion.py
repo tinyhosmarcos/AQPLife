@@ -162,8 +162,22 @@ class Gestionar_PaqueteDetailView(DetailView):
 			evento 		=form.save();
 		else:
 			print("vuelva a llenar el formulario")
-		evento 						=	Evento.objects.get(pk=self.kwargs.get("evento_id"))
-		self.context['evento']		=	evento
 		form 						= 	CrearPaqueteForm(instance_evento=evento)
 		self.context['form']		=	form		
 		return render(request, self.template_name,self.context)
+
+class Gestionar_PersonalDetailView(DetailView):
+	"""docstring for Gestionar Personal"""
+	template_name		='eventos/gestionar_personal.html'
+	context 			={
+
+	}
+	def get(self, request, *args, **kwargs):
+		evento 						=	Evento.objects.get(pk=self.kwargs.get("evento_id"))
+		form 						= 	CrearPersonalForm(instance_evento=evento)
+		self.context['evento']		=	evento
+		self.context['form']		=	form	
+		return render(request, self.template_name,self.context )
+
+	def post(self, request, *args, **kwargs):
+		pass

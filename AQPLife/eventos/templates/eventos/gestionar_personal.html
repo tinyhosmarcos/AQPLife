@@ -1,0 +1,71 @@
+{%extends 'eventos/index.html'%}
+
+{%block title%}{{object.nombre}}-Gestionar Personal{%endblock%}
+
+{%block section_1%}
+	<div class="container row section">
+		<div class="col s5">
+			<h3 class="center-align">Agregar Personal</h3>
+			<form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Agregar">
+                </form>
+		</div>	
+		<div class="col s7">
+			<h3 class="center-align">Personal Disponible</h3>
+			<table class="striped">
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Categoria Personal</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					{%for personal in evento.personal_set.all%}
+					<tr>
+						{%if personal.profile.user.last_name%}
+							<td>
+								{{personal.profile.user.last_name}}, {{personal.profile.user.first_name}}
+							</td>
+							<td>{{personal.categoria_personal}}</td>
+						{%else%}
+							<td>
+								{{personal.profile}}
+							</td>
+							<td>{{personal.categoria_personal}}</td>
+						{%endif%}
+					</tr>
+						
+					{%endfor%}
+					<tr>
+			
+				</tr>
+				</tbody>
+			</table>
+
+
+
+		</div>
+		
+	</div>
+		
+{%endblock%}
+
+
+
+{%block scrip_text%}
+	<script type="text/javascript">
+		$(document).ready(function(){
+					$(".dropdown-trigger").dropdown();
+    				$('.sidenav').sidenav();
+    				$('.tabs').tabs();
+    				$('.modal').modal();
+    				$('.collapsible').collapsible();
+    				$('select').formSelect();
+    				});
+	</script>
+	
+{%endblock%}
+

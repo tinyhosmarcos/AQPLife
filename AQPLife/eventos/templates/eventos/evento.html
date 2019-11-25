@@ -4,7 +4,8 @@
 
 {%block section_1%}
 	<div class="section container row">
-		<div class="col s9">
+		<div class="col s6">
+			<h4 class="center-align"> Datos del Evento</h4>
 			<table class="highlight">
 				<thead>
 					<tr>
@@ -28,26 +29,101 @@
 				</tr>
 				</tbody>
 			</table>
-		</div>
-		<div class="col s3 center-align">
-			
-			<div class="section">
-				<a href="{%url 'eventos:gestionar_ambiente' object.id%}" class="waves-effect waves-light btn-large center-align"><i class="material-icons right">airline_seat_legroom_normal</i>Ambientes</a>
-			</div>
-			<div class="section">
-				<a href="{%url 'eventos:gestionar_material' object.id%}" class="waves-effect waves-light btn-large center-align"><i class="material-icons right">border_color</i>Materiales</a>		
-			</div>
-			<div class="section">
-				<a href="{%url 'eventos:gestionar_paquete' object.id%}" class="waves-effect waves-light btn-large center-align"><i class="material-icons right">border_color</i>Paquetes</a>		
-			</div>
-			
-		</div>
-	<div class="col s9 center-align">
-		<div class="section">
+			<div class="section center-align">
 				<a href="{%url 'eventos:modificar_evento' object.id%}" class="waves-effect waves-light btn-large center-align"><i class="material-icons right">assignment</i>Modificar</a>
 			</div>
-		
-	</div>
+		</div>
+		<div class="col s6 center-align row">
+			<h4>Gestores</h4>
+			<ul class="collapsible">
+				<li>
+				<div class="collapsible-header">
+					<a href="{%url 'eventos:gestionar_personal' object.id%}"><i class="material-icons right">person_add</i></a> Personal
+				</div>
+				<div class="collapsible-body">
+					<span>
+						<a href="{%url 'eventos:gestionar_personal' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">person_add</i>Personal</a>
+					</span>
+				</div>
+				</li>
+
+				<li>
+				<div class="collapsible-header">
+					<a href="{%url 'eventos:gestionar_ambiente' object.id%}"><i class="material-icons right">event_seat</i></a> Ambientes
+				</div>
+				<div class="collapsible-body">
+					<span>
+						<a href="{%url 'eventos:gestionar_ambiente' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">airline_seat_legroom_normal</i>Ambientes</a>
+					</span>
+				</div>
+				</li>
+				<li>
+				<div class="collapsible-header">
+					<a href="{%url 'eventos:gestionar_actividad' object.id%}"><i class="material-icons right">event</i></a>Actividades y Ponentes
+				</div>
+				<div class="collapsible-body">
+					<span>
+						<a href="{%url 'eventos:gestionar_actividad' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">contact_mail</i>Expositores</a>
+						<a href="{%url 'eventos:gestionar_actividad' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">event</i>Actividades</a>
+					</span>
+				</div>
+				</li>
+				<li>
+				<div class="collapsible-header">
+					<a href="{%url 'eventos:gestionar_material' object.id%}"><i class="material-icons right">class</i></a>Materiales </div>
+				<div class="collapsible-body">
+					<span>
+						<a href="{%url 'eventos:gestionar_material' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">border_color</i>Materiales</a>
+					</span>
+				</div>
+				</li>
+				<li>
+				<div class="collapsible-header"><a href="{%url 'eventos:gestionar_ambiente' object.id%}"><i class="material-icons right">border_color</i></a>Inscripciones y Pre-Inscripciones</div>
+				<div class="collapsible-body">
+					<span>
+						<a href="{%url 'eventos:gestionar_material' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">create</i>PreInscritos</a>
+						<a href="{%url 'eventos:gestionar_material' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">border_color</i>Inscritos</a>		
+					</span>
+				</div>
+				<li>
+				<div class="collapsible-header"><a href="{%url 'eventos:gestionar_paquete' object.id%}"><i class="material-icons right">airline_seat_legroom_normal</i></a>Paquetes</div>
+				<div class="collapsible-body">
+					<span>
+						<a href="{%url 'eventos:gestionar_paquete' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">border_color</i>Paquetes</a>	
+					</span>
+				</div>
+				</li>
+				</li>
+			</ul>
+
+		</div>
+			<!-- 
+				<div class="col s6">
+				<div class="section">
+				<a href="{%url 'eventos:gestionar_ambiente' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">airline_seat_legroom_normal</i>Ambientes</a>
+			</div>
+			<div class="section">
+				<a href="{%url 'eventos:gestionar_material' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">border_color</i>Materiales</a>		
+			</div>
+			<div class="section">
+				<a href="{%url 'eventos:gestionar_paquete' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">border_color</i>Paquetes</a>		
+			</div>
+			
+			</div>
+			<div class="col s6">
+				<div class="section">
+				<a href="{%url 'eventos:gestionar_ambiente' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">airline_seat_legroom_normal</i>PreInscritos</a>
+			</div>
+			<div class="section">
+				<a href="{%url 'eventos:gestionar_material' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">border_color</i>Inscritos</a>		
+			</div>
+			<div class="section">
+				<a href="{%url 'eventos:gestionar_paquete' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">border_color</i>Expositores</a>		
+			</div>
+
+			 -->
+		</div>
+	
 	</div>
 {%endblock%}
 
@@ -57,7 +133,7 @@
 		<h2>Actividades</h2>
 			
 		<div class="section">
-				<a href="{%url 'eventos:gestionar_actividad' object.id%}" class="waves-effect waves-light btn-large center-align"><i class="material-icons right">art_track</i>Gestionar</a>		
+				<a href="{%url 'eventos:gestionar_actividad' object.id%}" class="waves-effect waves-light btn center-align"><i class="material-icons right">art_track</i>Gestionar</a>		
 			</div>
       <table>
         <thead>
@@ -86,3 +162,26 @@
 	</div>
 	
 {%endblock%}
+
+{%block scrip_text%}
+		<script type="text/javascript">
+			
+
+			$(document).ready(function(){
+				    $('.collapsible').collapsible();
+					$(".dropdown-trigger").dropdown();
+    				$('.sidenav').sidenav();
+    				$('.tabs').tabs();
+    				$('.carousel.carousel-slider').carousel({
+		    			fullWidth: true,
+		    			indicators: true
+		      			});
+
+    						});
+        	
+ 
+			
+  						
+
+		</script>
+		{%endblock%}		

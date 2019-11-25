@@ -37,7 +37,7 @@ class Ver_EventoDetailView(DetailView):
 
 
 	def post(self, request, *args, **kwargs):
-		passdetail
+		pass
 
 class Pre_InscribirseDetailView(DetailView):
 	template_name 		='eventos/pre_inscribirse.html'

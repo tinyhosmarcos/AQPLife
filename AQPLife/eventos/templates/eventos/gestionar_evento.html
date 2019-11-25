@@ -4,15 +4,17 @@
 {%block title%}Gestionar Eventos{%endblock%}
 
 
-
 {%block eventos_list%}
 	
 			{%for personal in object.personal_set.all%}
-				<div class="carousel-item red white-text" href="#lel!">
-					<h2>{{personal.evento}}</h2>
-					<a href="{%url 'eventos:evento' personal.evento.id%}">Link</a>
-					<p class="white-text">{{personal.evento.tipo_evento}}</p>
+				<div class="carousel-item black-text contenedor_carousel" >
+					<img src="{%static 'eventos/images/banner.png'%}">
+					<div class="texto_carousel">
+					<h2 class="flow-text black-text"><a href="{%url 'eventos:evento' personal.evento.id%}">{{personal.evento.nombre}}</a></h2>
+					<p class="flow-text black-text">{{personal.evento.tipo_evento}}</p>
+						
+					</div>
+					
 				</div>
 			{%endfor%}
-
-			{%endblock%}
+{%endblock%}

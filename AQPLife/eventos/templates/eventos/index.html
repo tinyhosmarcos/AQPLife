@@ -22,13 +22,13 @@
 				<div class="background teal lighten-2">
 			
 				</div>
-				<a href="#user"><i class="medium material-icons ">account_circle</i></a>
+				<a href="#user"><i class="medium material-icons index">account_circle</i></a>
 				<a href="#name"><span class="white-text name">{{user.username}}</span></a>
 				<a href="#email"><span class="white-text email">{{user.email}}</span></a>
 				</div>
 			</li>
-			<li><a href="{%url 'eventos:gestionar_evento' user.id %}"><i class="material-icons">assignment_ind</i>Mis eventos</a></li>
-			<li><a href=""><i class="material-icons">exit_to_app</i> Cerrar Sesión</a></li>
+			<li><a href="{%url 'eventos:gestionar_evento' user.id %}"><i class="material-icons index">assignment_ind</i>Mis eventos</a></li>
+			<li><a href=""><i class="material-icons index">exit_to_app</i> Cerrar Sesión</a></li>
 			<li><div class="divider"></div></li>
 			<li><a class="subheader">Editar Datos</a></li>
 			<li><a class="waves-effect" href="{%url 'admin:auth_user_change' user.id%}">Modificar Informacion</a></li>
@@ -51,7 +51,7 @@
 	<!-- Dropdown Structure -->
 		<nav>
 
-		<div class="nav-wrapper">
+		<div class="nav-wrapper este"  id="nav_bar">
 		  <a href="{%url 'eventos:index_2'%}" class=" brand-logo">AqpLife</a>
 		  <ul id="nav-mobile" class="right hide-on-med-and-down">
 
@@ -60,7 +60,7 @@
 		    <!-- Dropdown Trigger -->	
 
 		    <li><a href="">Contactanos</a></li>
-		    <li><a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons right">account_circle</i>{{user}}</a></li>
+		    <li><a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons index right">account_circle</i>{{user}}</a></li>
 
 		  </ul>
 		</div>
@@ -72,16 +72,21 @@
 	<div class="section ">
 		
 		<div class="carousel carousel-slider center">
-			<div class="carousel-fixed-item center">
+			<!--<div class="carousel-fixed-item center">
 				<a class="btn waves-effect white grey-text darken-text-2">button</a>
-			</div>
+			</div>-->
 			{%block eventos_list%}
 
 			{%for evento in eventos_list%}
-				<div class="carousel-item red white-text" href="#lel!">
-					<h2>{{evento.nombre}}</h2>
-					<a href="{%url 'eventos:ver_evento' evento.id%}">Link</a>
-					<p class="white-text">{{evento.tipo_evento}}</p>
+				<div class="carousel-item black-text contenedor_carousel" >
+					<img src="{%static 'eventos/images/banner.png'%}">
+					
+					<div class="texto_carousel">
+					<h2 class="flow-text black-text"><a href="{%url 'eventos:ver_evento' evento.id%}">{{evento.nombre}}</a></h2>
+					<p class="flow-text black-text">{{evento.tipo_evento}}</p>
+						
+					</div>
+					
 				</div>
 			{%endfor%}
 
@@ -102,7 +107,7 @@
 
 					<img src="https://materializecss.com/images/sample-1.jpg">
 					<span class="card-title">Crear Evento</span>
-					<a href="{%url 'eventos:crear_evento' user.id%}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+					<a href="{%url 'eventos:crear_evento' user.id%}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons index">add</i></a>
 					</div>
 					<div class="card-content">
 					<p>Crea tu propio evento de manera rapida, sencilla y ¡gratis!. No pierdas tiempo y unete a la plataforma MakeEvents.</p>
@@ -116,7 +121,7 @@
 				<div class="card-image">
 					<img src="https://materializecss.com/images/sample-1.jpg">
 					<span class="card-title">Eventos Disponibles</span>
-					<a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">search</i></a>
+					<a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons index">search</i></a>
 					</div>
 					<div class="card-content">
 					<p>Interactua con los miles de eventos que MakeEvents tiene para ti, no te los puedes perder. ¡Animate y compra tu paquete ya!.</p>
@@ -130,7 +135,7 @@
 				<div class="card-image">
 					<img src="https://materializecss.com/images/sample-1.jpg">
 					<span class="card-title">Soporte para Administradores</span>
-					<a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">assignment_ind</i></a>
+					<a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons index">assignment_ind</i></a>
 					</div>
 					<div class="card-content">
 					<p>¿Ya tienes tu evento?.k|	 Te ayudamos a mejorarlo y que superes tu meta de participación. MakeEvents esta para ti. </p>

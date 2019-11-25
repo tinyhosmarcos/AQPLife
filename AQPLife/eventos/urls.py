@@ -13,5 +13,5 @@ urlpatterns = [
 	path('<int:evento_id>/gestionar_paquete',views.Gestionar_PaqueteDetailView.as_view(),name='gestionar_paquete'),
 	path('<int:evento_id>/ver_evento',views.Ver_EventoDetailView.as_view(),name='ver_evento'),
 	path('<int:evento_id>/pre_inscribirse',views.Pre_InscribirseDetailView.as_view(),name='pre_inscribirse'),
-	
+	path('<int:evento_id>/gestionar_personal',views.Gestionar_PersonalDetailView.as_view(),name='gestionar_personal'),
 ]

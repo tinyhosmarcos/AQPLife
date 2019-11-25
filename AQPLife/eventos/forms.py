@@ -113,3 +113,22 @@ class CrearPaqueteForm(forms.ModelForm):
 		if evento:
 			self.fields['evento'].initial=evento.id
 			self.fields['actividad'] = forms.ModelMultipleChoiceField(queryset=Actividad.objects.filter(evento=evento.id))
+
+class CrearPersonalForm(forms.ModelForm):
+	categoria_personal 		=forms.ModelMultipleChoiceField(queryset=CategoriaPersonal.objects.all())
+	class Meta:
+		model=Personal
+		fields=[
+			'evento',
+			'profile',
+			'categoria_personal'
+		]
+		widgets={
+			'evento':forms.TextInput(attrs={'class':'input ', 'style':'display:none' ,'type':'hidden'}),
+				
+		}
+	def __init__(self,*args,**kwargs):
+		evento=kwargs.pop('instance_evento',None)
+		super(CrearPersonalForm, self).__init__(*args, **kwargs)
+		if evento:
+			self.fields['evento'].initial=evento.id
