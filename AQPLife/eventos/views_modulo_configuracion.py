@@ -180,4 +180,10 @@ class Gestionar_PersonalDetailView(DetailView):
 		return render(request, self.template_name,self.context )
 
 	def post(self, request, *args, **kwargs):
-		pass
+		print(request.POST)
+		form 			= CrearPersonalForm(request.POST)
+		if form.is_valid():
+			print("entro")
+			evento 		=form.save()
+		else:
+			print("no entro")

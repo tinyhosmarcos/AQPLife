@@ -1,12 +1,13 @@
 {%extends 'eventos/index.html'%}
 
-{%block title%}Pre-Inscritos{%endblock%}
+{%block title%}Inscritos{%endblock%}
 
 {%block section_1%}
-	<div class="section container row">
-		{%if inscrito%}
-		<div class="col s7">
-
+	
+	<div class="container row section">
+		
+		{%if inscrito.estado_inscripcion%}
+			<div class="col s7">
 			<h4 class="center-align">Estado de Inscripción</h4>
 			<div class="Inscripcion">
 				
@@ -18,7 +19,7 @@
 						<h5>Evento:	</h5>
 						<h5>Paquete Adquirido:</h5>
 						<h5>Estado de Pago:</h5>
-						<h5 class="brown-text">Codigo de Pago</h6>
+						<h5 class="brown-text">Codigo de Pago</h5>
 					</div>
 					<div class="col s7">
 						<h5> {{inscrito.profile.user.first_name}}</h5>	
@@ -35,48 +36,11 @@
 						<a class="tooltipped " data-position="left" data-tooltip="Codigo de Inscripcion">
 						<h5>{{inscrito.codigo_inscripcion}}</h5>
 						</a>
-					</div>
-					
+					</div>	
 				</li>
-					
 				</ul>
-            
-            </div>   
+            </div>
 		</div>
-		{%else%}
-			<div class="col s7">
-
-			<h4 class="center-align">Preinscribirse</h4>
-			<div class="form container">
-				<div class="row">
-					<div class="input-field col s6">
-					<input value="{{user.first_name}}" disabled id="first_name" type="text" class="validate">
-					<label for="first_name">Nombres</label>
-					</div>
-					<div class="input-field col s6">
-					<input value="{{user.last_name}}" disabled id="first_name" type="text" class="validate">
-					<label for="first_name">Apellidos</label>
-					</div>
-					<div class="input-field col s6">
-					<input value="{{evento.nombre}}" disabled id="first_name" type="text" class="validate">
-					<label for="first_name">Evento</label>
-					</div>
-					<div class="input-field col s6">
-					<input value="Preinscrito" disabled id="first_name" type="text" class="validate">
-					<label for="first_name">Estado</label>
-					</div>
-				</div>
-			<form action="" method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <div class="center-align">
-                <input type="submit" value="Registrarse" class="btn">
-                </div>
-                </form>
-             </div>   
-		</div>
-
-		{%endif%}		
 		<div class="col s5">
 			<h4 class="center-align">Paquetes Disponibles</h4>
 			<ul class="collapsible popout">
@@ -103,10 +67,30 @@
 			
 		</ul>
 		</div>
-	</div>
-{%endblock%}
+		{%else%}
+		<div class="col s6">
+			<h4>Inscribirse</h4>
+			<form action="" method="post">
+				
+				{% csrf_token %}
+				<div class="row valign-wrapper">
+					<div class="input-field col s6">
+					<i class="material-icons prefix">chrome_reader_mode</i>
+					<input id="codigo" type="number" name="codigo">
+					<label for="codigo">Codigo de Inscripcion</label>
+				</div>
+				<div class=" col s6 ">
+				<input type="submit" value="Verificar" class="btn valign-wrapper">
 
-{%block section_2%}
+				</div>
+				</div>
+				</form>
+		</div>
+		<div class="col s6">
+			
+		</div>
+		{%endif%}
+	</div>
 
 {%endblock%}
 
@@ -126,4 +110,3 @@
 	</script>
 	
 {%endblock%}
-

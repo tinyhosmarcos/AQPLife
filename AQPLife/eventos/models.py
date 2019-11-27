@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from datetime import datetime, date, time
-
+import random
 
 class Profile(models.Model):
 	user 				= models.OneToOneField(User, on_delete=models.CASCADE)
@@ -83,22 +83,36 @@ class Paquete(models.Model):
 		return self.nombre
 
 class Transaccion(models.Model):
+	transaccion_opciones=[
+		('compra','Compra'),
+		('venta','Venta'),
+	]
+	opciones_estado=[
+		('aprobado','Aprobado'),
+		('proceso','En proceso'),
+	]
 	evento 				=models.ForeignKey(Evento,on_delete=models.CASCADE)
-	factura				=models.CharField(max_length=30)
+	numero_factura		=models.CharField(max_length=30)
 	motivo				=models.CharField(max_length=100)
 	cantidad			=models.FloatField(default=0)
-	tipo_transaccion 	=models.CharField(max_length=15)
+	tipo_transaccion 	=models.CharField(choices=transaccion_opciones,default='compra',max_length=10)
+	estado_transaccion	=models.CharField(choices=opciones_estado,default='proceso',max_length=10)
 	def __str__(self):
-		return self.factura
+		return self.numero_factura
 
 
 class Inscrito(models.Model):
+	inscripcion_opciones=[
+		(False,'Pre-Inscrito'),
+		(True,'Inscrito'),
+	]
 	profile 			=models.ForeignKey(Profile,on_delete=models.CASCADE)
 	evento 				=models.ForeignKey(Evento,on_delete=models.CASCADE)
 	paquete				=models.ForeignKey(Paquete,on_delete=models.CASCADE)
-	estado_inscripcion 	=models.BooleanField(default=False)
+	codigo_inscripcion	=models.IntegerField(default=random.randint(1000000,5000000))
+	estado_inscripcion 	=models.BooleanField(choices=inscripcion_opciones,default=False)
 	def __str__(self):
-		return self.profile.categoria_usuario
+		return self.profile.user.username
 
 class PaqueteActividad(models.Model):
 	id_paquete			=models.ForeignKey(Paquete,on_delete=models.CASCADE)

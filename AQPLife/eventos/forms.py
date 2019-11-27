@@ -132,3 +132,42 @@ class CrearPersonalForm(forms.ModelForm):
 		super(CrearPersonalForm, self).__init__(*args, **kwargs)
 		if evento:
 			self.fields['evento'].initial=evento.id
+
+
+class PreInscribirseForm(forms.ModelForm):
+	paquete = forms.ModelChoiceField(queryset=Paquete.objects.all())
+	class Meta:
+		model=Inscrito
+		fields=[
+			'profile',
+			'evento',
+			'paquete',
+			'codigo_inscripcion',
+			'estado_inscripcion'
+		]
+		widgets={
+			'profile':forms.TextInput(attrs={'class':'input ', 'style':'display:none' ,'type':'hidden'}),
+			'evento':forms.TextInput(attrs={'class':'input ', 'style':'display:none' ,'type':'hidden'}),	
+			'estado_inscripcion':forms.TextInput(attrs={'class':'input ', 'style':'display:none' ,'type':'hidden'}),
+		}
+	def __init__(self,*args,**kwargs):
+		evento=kwargs.pop('instance_evento',None)
+		profile=kwargs.pop('instace_profile',None)
+		super(PreInscribirseForm, self).__init__(*args, **kwargs)
+		if evento:
+			self.fields['profile'].initial				=profile.user
+			self.fields['evento'].initial				=evento.id
+			self.fields['estado_inscripcion'].initial	=False
+			self.fields['paquete'] 						= forms.ModelChoiceField(queryset=Paquete.objects.filter(evento=evento.id))
+
+"""
+class InscribirseForm(forms.ModelForm):
+	docstring for InscribirseForm
+	class Meta:
+		fields=[
+			'codigo'
+		]
+		widgets={
+			'profile':forms.TextInput(attrs={'class':'input ', 'style':'display:none' ,'type':'hidden'}),
+		}
+		"""
