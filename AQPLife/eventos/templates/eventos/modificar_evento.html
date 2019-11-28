@@ -5,16 +5,7 @@
 {%block section_1%}
 	<div class="section container row">
 		<h2> Modificar Datos </h2>
-			 <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-          <label for="first_name">First Name</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate">
-          <label for="last_name">Last Name</label>
-        </div>
-      </div>
+			
 				<form action="" method="post">
 		    {% csrf_token %}
 		    {{ form.as_p }}

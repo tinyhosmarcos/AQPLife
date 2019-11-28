@@ -162,6 +162,7 @@ class Gestionar_PaqueteDetailView(DetailView):
 			evento 		=form.save();
 		else:
 			print("vuelva a llenar el formulario")
+		evento 						=	Evento.objects.get(pk=self.kwargs.get("evento_id"))
 		form 						= 	CrearPaqueteForm(instance_evento=evento)
 		self.context['form']		=	form		
 		return render(request, self.template_name,self.context)
@@ -177,6 +178,35 @@ class Gestionar_PersonalDetailView(DetailView):
 		form 						= 	CrearPersonalForm(instance_evento=evento)
 		self.context['evento']		=	evento
 		self.context['form']		=	form	
+		return render(request, self.template_name,self.context )
+
+	def post(self, request, *args, **kwargs):
+		print(request.POST)
+		form 			= CrearPersonalForm(request.POST)
+		if form.is_valid():
+			print("entro")
+			evento 		=form.save()
+		else:
+			print("no entro")
+
+
+class Gestionar_AsistenciaDetailView(DetailView):
+	"""docstring for ClassName"""
+	template_name 		='eventos/gestionar_asistencia.html'
+	context 			={
+
+	}
+	def get(self, request, *args, **kwargs):
+		evento 						=	Evento.objects.get(pk=self.kwargs.get("evento_id"))
+		lista_actividades 			= 	Actividad.objects.filter(evento=evento)
+		self.context['evento']		=	evento
+		self.context['lista_actividades'] 	= 	lista_actividades
+		if (request.GET):
+			lista_paquetes 			= 	Paquete.objects.filter(actividad=request.GET.get('actividad'))
+			lista_inscritos			= 	Inscrito.objects.filter(paquete__in=lista_paquetes).distinct()
+			self.context['lista_inscritos']	=lista_inscritos
+			self.context['actividad']		=Actividad.objects.get(pk=request.GET.get('actividad'))
+			print(request.GET.get('actividad'))
 		return render(request, self.template_name,self.context )
 
 	def post(self, request, *args, **kwargs):

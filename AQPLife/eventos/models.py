@@ -75,7 +75,7 @@ class MaterialAmbiente(models.Model):
 
 class Paquete(models.Model):
 	evento 				=models.ForeignKey(Evento,on_delete=models.CASCADE)
-	nombre 				=models.CharField(unique=True,max_length=30)
+	nombre 				=models.CharField(max_length=30)
 	descripcion			=models.CharField(max_length=100)
 	costo				=models.FloatField(default=0)
 	actividad 			=models.ManyToManyField(Actividad)
@@ -117,10 +117,8 @@ class Inscrito(models.Model):
 class PaqueteActividad(models.Model):
 	id_paquete			=models.ForeignKey(Paquete,on_delete=models.CASCADE)
 	id_actividad		=models.ForeignKey(Actividad,on_delete=models.CASCADE)
-class TipoAsistencia(models.Model):
-	nombre 				=models.CharField(max_length=20)
-	def __str__(self):
-		return self.nombre
+
+
 
 class Expositor(models.Model):
 	nombre 				=models.CharField(max_length=20)
@@ -132,8 +130,13 @@ class Expositor(models.Model):
 
 
 class Asistencia(models.Model):
+	tipo_asistencia=[
+		('general','General'),
+		('actividad','Actividad')
+	]
+	tipo_asistencia 	=models.CharField(choices=tipo_asistencia,default='general', max_length=15 )
 	inscrito 			=models.ForeignKey(Inscrito,on_delete=models.CASCADE)
-	actividad 			=models.ForeignKey(Actividad,on_delete=models.CASCADE)
+	actividad 			=models.ForeignKey(Actividad,on_delete=models.CASCADE, blank=True)
 	fecha  				=models.DateField(default=date.today)
 	hora 				=models.TimeField(default=datetime.now().time())
 	def __str__(self):

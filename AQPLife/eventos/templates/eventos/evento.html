@@ -128,37 +128,14 @@
 {%endblock%}
 
 {%block section_2%}
-	
-	<div class="section container">
-		<h2>Actividades</h2>
-			
-		<div class="section">
-				<a href="{%url 'eventos:gestionar_actividad' object.id%}" class="waves-effect waves-light btn center-align"><i class="material-icons right">art_track</i>Gestionar</a>		
-			</div>
-      <table>
-        <thead>
-          <tr>
-              <th>Nombre</th>
-              <th>Ambiente</th>
-              <th>Fecha</th>
-              <th>Hora de Inicio</th>
-              <th>Hora de Termino</th>
-          </tr>
-        </thead>
-
-        <tbody>
-        	{%for actividad in object.actividad_set.all%}
-          <tr>
-            <td>{{actividad.nombre}}</td>
-            <td>{{actividad.ambiente}}</td>
-            <td>{{actividad.fecha}}</td>
-            <td>{{actividad.hora_inicio}}</td>
-            <td>{{actividad.hora_fin}}</td>
-          </tr>
-        	{%endfor%}
-        </tbody>
-      </table>
-            	
+	<div class="container row section">
+		<div class="col s6 center-align">
+			<h4 class="center-align">Asistencia</h4>
+			<a  class="btn-large" href="{%url 'eventos:gestionar_asistencia' object.id%}">Registro de Asistencia</a>
+		</div>
+		<div class="col s6">
+			<h4 class="center-align">Reportes</h4>
+		</div>
 	</div>
 	
 {%endblock%}

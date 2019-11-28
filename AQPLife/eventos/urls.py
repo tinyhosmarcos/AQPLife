@@ -15,4 +15,6 @@ urlpatterns = [
 	path('<int:evento_id>/pre_inscribirse',views.Pre_InscribirseDetailView.as_view(),name='pre_inscribirse'),
 	path('<int:evento_id>/gestionar_personal',views.Gestionar_PersonalDetailView.as_view(),name='gestionar_personal'),
 	path('<int:evento_id>/inscribirse',views.InscribirseDetailView.as_view(),name='inscribirse'),
+	path('<int:evento_id>/gestionar_asistencia',views.Gestionar_AsistenciaDetailView.as_view(),name='gestionar_asistencia'),
+	
 ]
