@@ -8,6 +8,10 @@ from django.shortcuts import render,redirect
 from django.views import View
 from django.views.generic.detail import DetailView
 
+import cv2
+import numpy as np
+import pyzbar.pyzbar as pyzbar
+
 
 class Gestionar_EventoDetailView(DetailView):
 	template_name='eventos/gestionar_evento.html'
@@ -201,13 +205,31 @@ class Gestionar_AsistenciaDetailView(DetailView):
 		lista_actividades 			= 	Actividad.objects.filter(evento=evento)
 		self.context['evento']		=	evento
 		self.context['lista_actividades'] 	= 	lista_actividades
+		context_copy = self.context
 		if (request.GET):
+			print(" ASISTENCIA GET INIT")
 			lista_paquetes 			= 	Paquete.objects.filter(actividad=request.GET.get('actividad'))
 			lista_inscritos			= 	Inscrito.objects.filter(paquete__in=lista_paquetes).distinct()
 			self.context['lista_inscritos']	=lista_inscritos
 			self.context['actividad']		=Actividad.objects.get(pk=request.GET.get('actividad'))
-			print(request.GET.get('actividad'))
-		return render(request, self.template_name,self.context )
+			# print(request.GET.get('actividad'))
+			cap = cv2.VideoCapture(0, cv2.CAP_V4L2)
+			font = cv2.FONT_HERSHEY_PLAIN
+			while True:
+				_, frame = cap.read()
+				decodedObjects = pyzbar.decode(frame)
+				for obj in decodedObjects:
+					print("Data", obj.data)  # VALOR DEL QR CODE ESTA EN OBJ.DATA
+					cv2.putText(frame, str(obj.data), (50, 50), font, 2, (255, 0, 0), 3)
+
+				cv2.imshow("Frame", frame)
+				key = cv2.waitKey(1)
+				if key == 27:
+					print('PRESIONO ESC', key)
+					cap.release()
+					return render(request, self.template_name, context_copy)
+
+		return render(request, self.template_name, self.context)
 
 	def post(self, request, *args, **kwargs):
 		print(request.POST)
