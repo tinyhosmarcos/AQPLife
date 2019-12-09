@@ -40,6 +40,11 @@
 				</li>
 				</ul>
             </div>
+            {% if inscrito.estado_inscripcion%}
+			<form method='get' action='#' target="_blank" style="text-align:center;">
+    			<input type="submit" value="Ver Credenciales" name="descargar_credenciales" class="btn-large">
+			</form>
+			{% endif%}
 		</div>
 		<div class="col s5">
 			<h4 class="center-align">Paquetes Disponibles</h4>

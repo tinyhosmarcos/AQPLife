@@ -110,7 +110,20 @@
 		</div>
 		<div class="col s6 center-align">
 			<h4 class="center-align">Reportes</h4>
-			<a  class="btn-large" href="{%url 'eventos:gestionar_asistencia' object.id%}">Gestor de Reportes</a>
+			<form method='get' action='#' target="_blank" style="text-align:center;display: block;
+overflow: auto;">
+    			<input type="submit" value="Certificados" name="generar_certificados" class="btn-large" style="width:100%">
+    			<br><br>
+    			<input type="submit" value="Reporte Asistencia" name="reporte_asistencia" class="btn-large"style="width:100%">
+    			<br><br>
+    			<input type="submit" value="Reporte Paquetes" name="reporte_paquete" class="btn-large"style="width:100%">
+    			<br><br>
+    			<input type="submit" value="Caja (Día)" name="caja_dia" class="btn-large"style="width:100%">
+    			<br><br>
+    			<input type="submit" value="Caja (Evento)" name="caja_evento" class="btn-large"style="width:100%">
+			</form>
+			
+
 		</div>
 	</div>
 	
