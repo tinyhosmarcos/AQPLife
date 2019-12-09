@@ -92,9 +92,16 @@
 					</div>
 
 					<div class="collapsible-body row">
-						<h6 class="col s6">Descripcion</h6>
+						<h6 class="col s6"><b>Descripcion</b></h6>
 						<span class="col s12 left-align">
-							{{paquete.descripcion}} <a href="">+info</a>
+							{{paquete.descripcion}}.
+						</span>
+						<h6 class="col s6"><b>Actividades</b></h6>
+						<span class="col s12 left-align">
+							{%for actividad in paquete.actividad.all%}
+							<b>Nombre:</b> {{actividad.nombre}}, <b>Lugar:</b> {{actividad.ambiente.nombre}} - {{actividad.ambiente.ubicacion}}, <b>Fecha:</b> {{actividad.fecha}}, <b>Horario:</b> {{actividad.hora_inicio}} a {{actividad.hora_fin}}
+							<br>
+							{%endfor%}
 						</span>
 						<h6 class="col s6">Costo</h6><a class="col s6 waves-effect waves-light btn">{{paquete.costo}} $</a>
 					</div>	

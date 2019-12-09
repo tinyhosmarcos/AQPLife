@@ -331,8 +331,9 @@ class ModificarEventoDetailView(DetailView):
         return render(request, self.template_name,self.context)
     
 class CrearEventoDetailView(DetailView):
-    template_name         ='eventos/crear_evento.html'
-    context               ={
+    """Controlador para Crear Evento"""
+    template_name       ='eventos/crear_evento.html'
+    context             ={
 
     }
     def  get_object(self):
@@ -340,15 +341,34 @@ class CrearEventoDetailView(DetailView):
         return get_object_or_404(Profile,user=_id)
 
     def get(self, request, *args, **kwargs):
-        form                                 =CrearEventoForm()
+        form                                =CrearEventoForm()
+        profile                             =Profile.objects.get(user=kwargs.get("user_id"))
+        personal_list                       =Personal.objects.filter(profile=profile,categoria_personal=1)
+        self.context['personal_list']       = personal_list
         self.context['form']                =form
         return render(request, self.template_name,self.context )
 
     def post(self, request, *args, **kwargs):
-        form              = CrearEventoForm(request.POST)
+        form            = CrearEventoForm(request.POST)
         if form.is_valid():
-            evento         =form.save();
-            personal      =Personal.objects.create(profile_id=self.kwargs.get("user_id"),evento_id=evento.id,categoria_personal_id=1)
+            evento      =form.save();
+            personal    =Personal.objects.create(profile_id=self.kwargs.get("user_id"),evento_id=evento.id,categoria_personal_id=1)
+        if 'adaptar' in request.POST:
+            adaptar     =Evento.objects.get(pk=request.POST.get('evento_adaptar'))
+            evento_create       =Evento.objects.create(nombre=request.POST.get('nombre'),tipo_evento=adaptar.tipo_evento,
+                                        fecha_inicio=request.POST.get('fecha_inicio'),
+                                        fecha_fin=request.POST.get('fecha_fin'))
+            lista_ambientes=Ambiente.objects.filter(evento=adaptar.id)
+            print(evento_create.id)
+            _id=evento_create.id
+            for ambiente in lista_ambientes:
+                print(ambiente.nombre)
+                adaptar_ambiente=Ambiente.objects.create(nombre=ambiente.nombre+"_"+str(_id),
+                                                        evento=evento_create,
+                                                        ubicacion=ambiente.ubicacion,
+                                                        capacidad=ambiente.capacidad)
+            
+
         return render(request, self.template_name,self.context)
 
 class Gestionar_MaterialDetailView(DetailView):
