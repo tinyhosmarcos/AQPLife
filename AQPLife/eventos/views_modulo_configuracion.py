@@ -110,6 +110,41 @@ class Gestionar_MaterialDetailView(DetailView):
 		_id=self.kwargs.get("evento_id")
 		return get_object_or_404(Evento,id=_id)
 
+	def get(self, request,*args,**kwargs):
+		evento= Evento.objects.get(pk=self.kwargs.get("evento_id"))
+		self.context['evento']				=evento
+		if 'submit_actividad' in request.GET:
+			material=MaterialActividad.objects.filter(actividad=request.GET.get('ver_actividad'))
+			self.context['material'] 		=material
+		if 'submit_ambiente' in request.GET:
+			material=MaterialAmbiente.objects.filter(ambiente=request.GET.get('ver_ambiente'))
+			self.context['material'] 		=material
+
+
+
+		return render(request, self.template_name,self.context )
+
+	def post(self, request, *args, **kwargs):
+		evento= Evento.objects.get(pk=self.kwargs.get("evento_id"))
+		self.context['evento']				=evento
+		if 'send_material_actividad' in request.POST:
+			actividad=Actividad.objects.get(pk=request.POST.get('actividad'))
+			material_actividad=MaterialActividad.objects.create(
+					actividad=actividad,
+					nombre=request.POST.get('nombre'),
+					cantidad=request.POST.get('cantidad'),
+					stock=request.POST.get('stock')
+				)
+		if 'send_material_ambiente' in request.POST:
+			ambiente=Ambiente.objects.get(pk=request.POST.get('ambiente'))
+			material_ambiente=MaterialAmbiente.objects.create(
+				ambiente=ambiente,
+				nombre=request.POST.get('nombre'),
+				cantidad=request.POST.get('cantidad'),
+				stock=request.POST.get('stock')
+				)
+
+		return render(request, self.template_name,self.context )	
 class Gestionar_AmbienteDetailView(DetailView):
 	"""Controlador para Gestionar Ambiente"""
 	template_name		='eventos/gestionar_ambiente.html'

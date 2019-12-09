@@ -114,6 +114,8 @@ class Inscrito(models.Model):
 	def __str__(self):
 		return self.profile.user.username
 
+
+#vestigio, listo para borrar!		
 class PaqueteActividad(models.Model):
 	id_paquete			=models.ForeignKey(Paquete,on_delete=models.CASCADE)
 	id_actividad		=models.ForeignKey(Actividad,on_delete=models.CASCADE)
