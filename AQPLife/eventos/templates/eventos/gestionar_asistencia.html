@@ -30,7 +30,7 @@
 		</form>
 
 		<div class="col s9 center-align container">
-			<h4 class="blue-text">Registro de Asistencia</h4>
+			<h4 class="blue-text">Lista de Inscritos</h4>
 			{%if lista_inscritos%}
 			<span>
 				<h6 class="blue-text">Fecha: {{actividad.fecha}}</h6>
@@ -42,7 +42,6 @@
 						<tr>
 							<th>Nombres</th>
 							<th>Apellidos</th>
-							<th>¿Asistio?</th>
 						</tr>
 					</thead>
 
@@ -51,15 +50,28 @@
 							<tr>	
 								<td>{{inscrito.profile.user.first_name}}</td>
 								<td>{{inscrito.profile.user.last_name}}</td>
-								<td>
-									<p>
-									<label>
-									<input type="checkbox" />
-									<span></span>
-									</label>
-									</p>
-								</td>
 
+							</tr>
+						{%endfor%}
+					</tbody>
+				</table>
+            
+			{%endif%}
+			<h4 class="blue-text">Lista de Asistentes</h4>
+			{%if lista_asistentes%}
+				<table class="highlight centered">
+					<thead>
+						<tr>
+							<th>Nombres</th>
+							<th>Apellidos</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						{%for asistente in lista_asistentes%}
+							<tr>	
+								<td>{{asistente.inscrito.profile.user.first_name}}</td>
+								<td>{{asistente.inscrito.profile.user.last_name}}</td>
 							</tr>
 						{%endfor%}
 					</tbody>
@@ -69,6 +81,8 @@
 
 
 			{%endif%}
+		</div>
+		
 		</div>
 		
 	</div>
