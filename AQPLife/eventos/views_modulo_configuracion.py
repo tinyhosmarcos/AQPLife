@@ -12,6 +12,7 @@ import cv2
 import numpy as np
 import pyzbar.pyzbar as pyzbar
 import io
+from datetime import timedelta
 
 def Registrar_Asistencia(codigo_inscripcion, actividad):
     try :
@@ -186,6 +187,36 @@ class EventoDetailView(DetailView):
                 for ins in lista_inscritos:
                     pdf.drawString(50, pos_ins, ins.profile.user.first_name + ' ' + ins.profile.user.last_name)
                     pos_ins -= offset
+                pdf.showPage()
+
+            pdf.save()
+            pdf = buffer.getvalue()
+            buffer.close()
+            response.write(pdf)
+            return response
+
+        if request.GET.get("caja_dia"):
+            fecha = evento.fecha_inicio
+            try:
+                lista_actividades = Actividad.objects.filter(evento=evento)
+            except Inscrito.DoesNotExist:
+                lista_actividades = []
+
+            lista_paquetes = Paquete.objects.filter(actividad__in=lista_actividades).distinct()
+            response = HttpResponse(content_type='application/pdf')         
+            buffer = io.BytesIO()
+            pdf = canvas.Canvas(buffer)
+            while fecha <= evento.fecha_fin:
+                print(fecha)
+                pdf.setFont('Helvetica-Bold', 24)
+                pdf.drawCentredString(300, 800, 'Día: ' + fecha.strftime('%y - %m - %d'))
+                pdf.setFont('Helvetica-Bold', 18)
+                pdf.drawString(50, 760, 'Inscritos: ')
+                pdf.setFont('Helvetica', 12)
+                offset = 20
+                pos_ins = 720
+                pos_asi = 720
+                fecha += timedelta(days=1)
                 pdf.showPage()
 
             pdf.save()
