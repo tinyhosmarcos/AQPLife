@@ -8,8 +8,8 @@
 				<h5 class="center-align">Seleccionar</h5>
 				<div class="input-field col s12">
 					<select name="tipo_asistencia">
-					<option value="general">General</option>
-					<option value="actividad">Por Actividad</option>
+					<option value="1">General</option>
+					<option value="2">Por Actividad</option>
 					</select>
 					<label>Tipo de Asistencia</label>
 				</div>
@@ -23,57 +23,63 @@
 					<label>Seleccione Su Actividad</label>
 				</div>
 				<div class="center-align col s12">
-					<button class="btn" type="submit" value="Enviar">Seleccionar</button>
+					<button class="btn" type="submit" value="Enviar">Tomar Asistencia</button>
 				</div>
 			</div>
 				
 		</form>
 
 		<div class="col s9 center-align container">
-			<h4 class="blue-text">Registro de Asistencia</h4>
+			<h4 class="blue-text">Lista de Inscritos</h4>
 			{%if lista_inscritos%}
 			<span>
-				<h6 class="blue-text">Actividad: {{actividad.nombre}}</h6>
 				<h6 class="blue-text">Fecha: {{actividad.fecha}}</h6>
 				<h6 class="blue-text">Hora de Inicio: {{actividad.hora_inicio}} Hora de Fin: {{actividad.hora_fin}}</h6>
 				<h6 class="blue-text"></h6>
 			</span>
-				<form method="POST">
-				{%csrf_token%} 
-					<table class="highlight centered">
-						<thead>
-							<tr>
-								<th>Apellidos</th>
-								<th>Nombres</th>
-								<th>¿Asistió?</th>
+				<table class="highlight centered">
+					<thead>
+						<tr>
+							<th>Nombres</th>
+							<th>Apellidos</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						{%for inscrito in lista_inscritos%}
+							<tr>	
+								<td>{{inscrito.profile.user.first_name}}</td>
+								<td>{{inscrito.profile.user.last_name}}</td>
+
 							</tr>
-						</thead>
-						<tbody>
-							{%for inscrito in lista_inscritos%}
-								<tr>	
-									<td>{{inscrito.profile.user.last_name}}</td>
-									<td>{{inscrito.profile.user.first_name}}</td>
-
-									<td>
-										<p>
-										<label>
-										<input id="id_inscrito" type="checkbox" name="{{inscrito.id}}" />
-										<span></span>
-										</label>
-										</p>
-									</td>
-
-								</tr>
-							{%endfor%}
-						</tbody>
-					</table>
-					<button class="btn" type="submit">Registrar</button>
-				</form>
+						{%endfor%}
+					</tbody>
+				</table>
             
+			{%endif%}
+			<h4 class="blue-text">Lista de Asistentes</h4>
+			{%if lista_asistentes%}
+				<table class="highlight centered">
+					<thead>
+						<tr>
+							<th>Nombres</th>
+							<th>Apellidos</th>
+						</tr>
+					</thead>
 
-
+					<tbody>
+						{%for asistente in lista_asistentes%}
+							<tr>	
+								<td>{{asistente.inscrito.profile.user.first_name}}</td>
+								<td>{{asistente.inscrito.profile.user.last_name}}</td>
+							</tr>
+						{%endfor%}
+					</tbody>
+				</table>
 
 			{%endif%}
+		</div>
+		
 		</div>
 		
 	</div>
