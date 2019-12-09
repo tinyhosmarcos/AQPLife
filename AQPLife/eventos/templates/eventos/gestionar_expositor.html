@@ -1,0 +1,47 @@
+{%extends 'eventos/index.html'%}
+{%block title%}Gestionar Expositores{%endblock%}
+
+{%block section_1%}
+	<div class="container row section">
+		<div class="col s6">
+			<h5 class="blue-text center-align">Crear Expositor</h5>
+			<form method="POST">
+				{%csrf_token%}
+				{{form.as_p}}
+				<div class="center-align">
+					<button type="submit" class="btn">Crear</button>	
+				</div>
+				
+			</form>
+		</div>
+		<div class="col s6">
+			<h5 class="blue-text center-align">Expositores Disponibles</h5>
+			<ul class="collection">
+				{%for expositor in lista_expositor%}
+					<li class="collection-item avatar">
+					<i class="material-icons circle">account_circle</i>
+					<span class="title">Nombre:	{{expositor.nombre}}</span>
+					<p>Apellido: {{expositor.apellido}} </p>
+					<a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>
+					</li>
+				{%endfor%}
+			</ul>
+
+		</div>
+	</div>
+{%endblock%}
+
+
+{%block scrip_text%}
+	<script type="text/javascript">
+		$(document).ready(function(){
+					$(".dropdown-trigger").dropdown();
+    				$('.sidenav').sidenav();
+    				$('.tabs').tabs();
+    				$('.modal').modal();
+    				$('.collapsible').collapsible();
+    				$('select').formSelect();
+    				});
+	</script>
+	
+{%endblock%}

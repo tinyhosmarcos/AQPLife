@@ -40,8 +40,9 @@
 
 				</div>
 			</div>
-		
-			<!-- Modal Structure Agregar Actividad -->
+		</div>
+	</div>
+	<!-- Modal Structure Agregar Actividad -->
 				<div id="modal_AgregarActividad" class="modal">
 					<form action="" method="post">
 					{% csrf_token %}
@@ -53,8 +54,6 @@
 					</div>
 					</form>
 				</div>
-		</div>
-	</div>
 {%endblock%}
 {%block section_2%}
 
@@ -66,6 +65,13 @@
 	<script type="text/javascript">
 
 		$(document).ready(function(){
+			  $('.datepicker').datepicker({
+                format:'yyyy-mm-dd',
+                
+            });
+			  $('.timepicker').timepicker({
+			  	 twelveHour	: false,
+			  });
 		    $('.sidenav').sidenav();
 		    $('.modal').modal();
 		    $('input.autocomplete').autocomplete({

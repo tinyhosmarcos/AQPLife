@@ -14,3 +14,22 @@
 				
 	</div>
 {%endblock%}
+
+{%block scrip_text%}
+    <script type="text/javascript">
+        $(document).ready(function(){
+                    $('.datepicker').datepicker({
+                format:'yyyy-mm-dd',
+                
+            });
+                    $(".dropdown-trigger").dropdown();
+                      $('.tooltipped').tooltip();
+                    $('.sidenav').sidenav();
+                    $('.tabs').tabs();
+                    $('.modal').modal();
+                    $('.collapsible').collapsible();
+                    $('select').formSelect();
+                    });
+    </script>
+    
+{%endblock%}

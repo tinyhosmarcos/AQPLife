@@ -63,7 +63,7 @@
 				</div>
 				<div class="collapsible-body">
 					<span>
-						<a href="{%url 'eventos:gestionar_actividad' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">contact_mail</i>Expositores</a>
+						<a href="{%url 'eventos:gestionar_expositor' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">contact_mail</i>Expositores</a>
 						<a href="{%url 'eventos:gestionar_actividad' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">event</i>Actividades</a>
 					</span>
 				</div>
@@ -81,8 +81,8 @@
 				<div class="collapsible-header"><a href="{%url 'eventos:gestionar_ambiente' object.id%}"><i class="material-icons right">border_color</i></a>Inscripciones y Pre-Inscripciones</div>
 				<div class="collapsible-body">
 					<span>
-						<a href="{%url 'eventos:gestionar_material' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">create</i>PreInscritos</a>
-						<a href="{%url 'eventos:gestionar_material' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">border_color</i>Inscritos</a>		
+						<a href="{%url 'eventos:gestionar_preinscrito' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">create</i>PreInscritos</a>
+						<a href="{%url 'eventos:gestionar_inscrito' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">border_color</i>Inscritos</a>		
 					</span>
 				</div>
 				<li>
@@ -97,31 +97,6 @@
 			</ul>
 
 		</div>
-			<!-- 
-				<div class="col s6">
-				<div class="section">
-				<a href="{%url 'eventos:gestionar_ambiente' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">airline_seat_legroom_normal</i>Ambientes</a>
-			</div>
-			<div class="section">
-				<a href="{%url 'eventos:gestionar_material' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">border_color</i>Materiales</a>		
-			</div>
-			<div class="section">
-				<a href="{%url 'eventos:gestionar_paquete' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">border_color</i>Paquetes</a>		
-			</div>
-			
-			</div>
-			<div class="col s6">
-				<div class="section">
-				<a href="{%url 'eventos:gestionar_ambiente' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">airline_seat_legroom_normal</i>PreInscritos</a>
-			</div>
-			<div class="section">
-				<a href="{%url 'eventos:gestionar_material' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">border_color</i>Inscritos</a>		
-			</div>
-			<div class="section">
-				<a href="{%url 'eventos:gestionar_paquete' object.id%}" class="waves-effect waves-light btn-large"><i class="material-icons right">border_color</i>Expositores</a>		
-			</div>
-
-			 -->
 		</div>
 	
 	</div>
@@ -131,19 +106,11 @@
 	<div class="container row section">
 		<div class="col s6 center-align">
 			<h4 class="center-align">Asistencia</h4>
-			<a  style="width:100%" class="btn-large" href="{%url 'eventos:gestionar_asistencia' object.id%}">Registro de Asistencia</a>
+			<a  class="btn-large" href="{%url 'eventos:gestionar_asistencia' object.id%}">Registro de Asistencia</a>
 		</div>
-		<div class="col s6">
+		<div class="col s6 center-align">
 			<h4 class="center-align">Reportes</h4>
-			<form method='get' action='#' target="_blank" style="text-align:center;display: block;
-overflow: auto;">
-    			<input type="submit" value="Certificados" name="generar_certificados" class="btn-large" style="width:100%">
-    			<br><br>
-    			<input type="submit" value="Reporte Asistencia" name="reporte_asistencia" class="btn-large"style="width:100%">
-    			<br><br>
-    			<input type="submit" value="Reporte Paquetes" name="reporte_paquete" class="btn-large"style="width:100%">
-			</form>
-			
+			<a  class="btn-large" href="{%url 'eventos:gestionar_asistencia' object.id%}">Gestor de Reportes</a>
 		</div>
 	</div>
 	

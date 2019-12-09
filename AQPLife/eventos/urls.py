@@ -1,3 +1,9 @@
+#Esta seccion de codigo se encarga de enlazar los accesos de interfaz con los controladores
+# cada controlador consta de la funcion .as_view() que se encarga de llamarlos
+# la variable name asocia la especificacion con los controladores
+
+
+
 from django.urls import path
 from . import views
 app_name='eventos'
@@ -16,5 +22,9 @@ urlpatterns = [
 	path('<int:evento_id>/gestionar_personal',views.Gestionar_PersonalDetailView.as_view(),name='gestionar_personal'),
 	path('<int:evento_id>/inscribirse',views.InscribirseDetailView.as_view(),name='inscribirse'),
 	path('<int:evento_id>/gestionar_asistencia',views.Gestionar_AsistenciaDetailView.as_view(),name='gestionar_asistencia'),
-	
+	path('<int:evento_id>/gestionar_expositor',views.Gestionar_ExpositorDetailView.as_view(),name='gestionar_expositor'),
+ 	path('<int:evento_id>/gestionar_preinscrito',views.Gestionar_PreInscritoDetailView.as_view(),name='gestionar_preinscrito'),
+ 	path('<int:evento_id>/gestionar_inscrito',views.Gestionar_InscritoDetailView.as_view(),name='gestionar_inscrito'),
+ 	path('<int:evento_id>/eventos_inscrito',views.EventosInscritoView.as_view(),name='eventos_inscrito'),
+
 ]
