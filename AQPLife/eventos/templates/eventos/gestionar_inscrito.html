@@ -1,0 +1,56 @@
+{%extends 'eventos/index.html'%}
+{% load static %}
+
+{%block title%}Gestionar Inscritos{%endblock%}
+
+{%block section_1%}
+	<div class="container row section">
+		<div class="col s12 blue-text center-align">
+			<h3>Relacion de Inscritos</h3>
+		</div>
+		<div class="col s4">
+			<p>Total:{{inscrito}}</p>
+		</div>
+		<table class="centered striped">
+			<thead>
+				<tr>
+					<th>Apellidos</th>
+					<th>Nombres</th>
+					<th>Codigo de Inscripcion</th>
+					<th>Paquete Registrado</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{%for inscrito in evento.inscrito_set.all%}
+					{%if not inscrito.estado_inscripcion%}
+					<tr>
+						<td>{{inscrito.profile.user.last_name}}</td>
+						<td>{{inscrito.profile.user.first_name}}</td>
+						<td>{{inscrito.codigo_inscripcion}}</td>
+						<td>{{inscrito.paquete}}</td>
+					{%endif%}	
+					</tr>
+				{%endfor%}
+			</tbody>
+		</table>
+
+	</div>
+{%endblock%}
+
+
+
+{%block scrip_text%}
+	<script type="text/javascript">
+		$(document).ready(function(){
+					$(".dropdown-trigger").dropdown();
+					  $('.tooltipped').tooltip();
+    				$('.sidenav').sidenav();
+    				$('.tabs').tabs();
+    				$('.modal').modal();
+    				$('.collapsible').collapsible();
+    				$('select').formSelect();
+    				});
+	</script>
+	
+{%endblock%}

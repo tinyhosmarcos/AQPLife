@@ -4,13 +4,16 @@
 
 {%block section_1%}
 	<div class="section container row">
-		<h2> Crear Evento </h2>
-        <div class="col s6">
+		<h4  class="blue-text center-align    "> Crear Evento </h4>
+        <div class="col s6 ">
             <form action="" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <input type="submit" value="Agregar" id="CrearEvento">
+                <div class="center-align">
+                <input type="submit" class="btn" value="Agregar" id="CrearEvento">
+                </div>
                 </form>
+
         </div>
         <div class="section col s6">
                     <img class="col s12"  src="https://materializecss.com/images/sample-1.jpg">
@@ -33,4 +36,58 @@
 {% endif %}	
 				
 	</div>
+{%endblock%}
+
+
+{%block section_2%}
+    <div class="section container row">
+        <h4 class="blue-text center-align ">Adaptar evento</h4>
+        <div class="col s6">
+            <p class="center-align">
+                Seleccione su evento a Adaptar:
+
+            </p>
+        </div>
+        <form method="POST" action="">
+        <div class="col s4">
+            
+                {%csrf_token%}
+                <select name="evento_adaptar">
+                <option value="" disabled selected>Evento</option>
+                {%for personal in personal_list%}
+                    <option value="{{personal.evento.id}}">{{personal.evento.nombre}}</option>
+                {%endfor%}
+                </select>
+                <label>Seleccionar Evento</label>
+                <input type="text" name="nombre">
+                <label>Nombre</label>
+                <input type="text" name="fecha_inicio" class="datepicker">
+                <label>Fecha de Inicio</label>
+                <input type="text" name="fecha_fin" class="datepicker">
+                <label>Fecha de Fin</label>
+          
+        </div>
+        <div class="col s2 valign-wrapper">
+            <button class="btn" name="adaptar" type="submit">Adaptar</button>
+        </div>
+          </form>
+    </div>
+{%endblock%}
+{%block scrip_text%}
+    <script type="text/javascript">
+        $(document).ready(function(){
+                    $('.datepicker').datepicker({
+                format:'yyyy-mm-dd',
+                
+            });
+                    $(".dropdown-trigger").dropdown();
+                      $('.tooltipped').tooltip();
+                    $('.sidenav').sidenav();
+                    $('.tabs').tabs();
+                    $('.modal').modal();
+                    $('.collapsible').collapsible();
+                    $('select').formSelect();
+                    });
+    </script>
+    
 {%endblock%}

@@ -41,7 +41,6 @@ class Personal(models.Model):
 class Ambiente(models.Model):
 	nombre				=models.CharField(primary_key=True,max_length=30)
 	evento				=models.ForeignKey(Evento,on_delete=models.CASCADE)
-	
 	ubicacion			=models.CharField(max_length=30)
 	capacidad			=models.IntegerField(default=0)
 	def __str__(self):
@@ -97,36 +96,27 @@ class Transaccion(models.Model):
 	cantidad			=models.FloatField(default=0)
 	tipo_transaccion 	=models.CharField(choices=transaccion_opciones,default='compra',max_length=10)
 	estado_transaccion	=models.CharField(choices=opciones_estado,default='proceso',max_length=10)
+	fecha 				=models.DateField(default=date.today)
 	def __str__(self):
 		return self.numero_factura
 
 
 class Inscrito(models.Model):
-	inscripcion_opciones = [
-		(False, 'Pre-Inscrito'),
-		(True, 'Inscrito'),
+	inscripcion_opciones=[
+		(False,'Pre-Inscrito'),
+		(True,'Inscrito'),
 	]
-	profile 			=models.ForeignKey(Profile, on_delete=models.CASCADE)
-	evento 				=models.ForeignKey(Evento, on_delete=models.CASCADE)
-	paquete				=models.ForeignKey(Paquete, on_delete=models.CASCADE)
-	codigo_inscripcion	=models.IntegerField(default=random.randint(1000000, 5000000))
-	estado_inscripcion 	=models.BooleanField(choices=inscripcion_opciones, default=False)
+	profile 			=models.ForeignKey(Profile,on_delete=models.CASCADE)
+	evento 				=models.ForeignKey(Evento,on_delete=models.CASCADE)
+	paquete				=models.ForeignKey(Paquete,on_delete=models.CASCADE)
+	codigo_inscripcion	=models.IntegerField(default=random.randint(1000000,5000000))
+	estado_inscripcion 	=models.BooleanField(choices=inscripcion_opciones,default=False)
 	def __str__(self):
 		return self.profile.user.username
 
-
-class Asistencia(models.Model):
-	tipo_asistencia=[
-		('general','General'),
-		('actividad','Actividad')
-	]
-	tipo_asistencia 	=models.CharField(choices=tipo_asistencia,default='general', max_length=15 )
-	inscrito 			=models.ForeignKey(Inscrito, on_delete=models.CASCADE)
-	actividad 			=models.ForeignKey(Actividad, on_delete=models.CASCADE, blank=True)
-	fecha  				=models.DateField(default=date.today)
-	hora 				=models.TimeField(default=datetime.now().time())
-	def __str__(self):
-		return self.inscrito.profile.user.first_name
+class PaqueteActividad(models.Model):
+	id_paquete			=models.ForeignKey(Paquete,on_delete=models.CASCADE)
+	id_actividad		=models.ForeignKey(Actividad,on_delete=models.CASCADE)
 
 
 
@@ -138,10 +128,19 @@ class Expositor(models.Model):
 		return self.nombre
 
 
-class PaqueteActividad(models.Model):
-	id_paquete			=models.ForeignKey(Paquete, on_delete=models.CASCADE)
-	id_actividad		=models.ForeignKey(Actividad, on_delete=models.CASCADE)
 
+class Asistencia(models.Model):
+	opciones_asistencia=[
+		('general','General'),
+		('actividad','Actividad')
+	]
+	tipo_asistencia 	=models.CharField(choices=opciones_asistencia,default='general', max_length=15 )
+	inscrito 			=models.ForeignKey(Inscrito,on_delete=models.CASCADE)
+	actividad 			=models.ForeignKey(Actividad,on_delete=models.CASCADE, blank=True)
+	fecha  				=models.DateField(default=date.today)
+	hora 				=models.TimeField(default=datetime.now().time())
+	def __str__(self):
+		return self.inscrito
 
 
 @receiver(post_save, sender=User)

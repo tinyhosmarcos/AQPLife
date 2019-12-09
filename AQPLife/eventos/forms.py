@@ -2,7 +2,8 @@ from django import forms
 from .models import *
 
 
-
+#Aqui se encuentran los forms que alteran directamente la base de datos
+#Para mas informacion revisar la documentacion de Django.
 
 
 class CrearEventoForm(forms.ModelForm):
@@ -17,8 +18,8 @@ class CrearEventoForm(forms.ModelForm):
 		widgets={
 			'nombre':forms.TextInput(attrs={'class':'input'}),
 			'tipo_evento':forms.TextInput(attrs={'class':'input'}),
-			'fecha_inicio':forms.TextInput(attrs={'class':'input'}),
-			'fecha_fin':forms.TextInput(attrs={'class':'input'})
+			'fecha_inicio':forms.TextInput(attrs={'type':'text','class':'datepicker'}),
+			'fecha_fin':forms.TextInput(attrs={'type':'text','class':'datepicker'})
 		}
 class CrearAmbienteForm(forms.ModelForm):
 	class Meta:
@@ -49,8 +50,8 @@ class ModificarEventoForm(forms.ModelForm):
 		widgets={
 			'nombre':forms.TextInput(attrs={'class':'input'}),
 			'tipo_evento':forms.TextInput(attrs={'class':'input'}),
-			'fecha_inicio':forms.TextInput(attrs={'class':'input'}),
-			'fecha_fin':forms.TextInput(attrs={'class':'input'})
+			'fecha_inicio':forms.TextInput(attrs={'type':'text','class':'datepicker'}),
+			'fecha_fin':forms.TextInput(attrs={'type':'text','class':'datepicker'})
 		}
 class CrearAmbienteForm(forms.ModelForm):
 	class Meta:
@@ -84,9 +85,9 @@ class CrearActividadForm(forms.ModelForm):
 			'evento':forms.TextInput(attrs={'class':'input ', 'style':'display:none' ,'type':'hidden'}),
 			'ambiente':forms.TextInput(attrs={'class':'autocomplete input-field','type':'text', 'id':'autocomplete-input'}),
 			'nombre':forms.TextInput(attrs={'class':'input'}),
-			'fecha':forms.TextInput(attrs={'class':'input'}),
-			'hora_inicio':forms.TextInput(attrs={'class':'input'}),
-			'hora_fin':forms.TextInput(attrs={'class':'input'})
+			'fecha':forms.TextInput(attrs={'type':'text','class':'datepicker'}),
+			'hora_inicio':forms.TextInput(attrs={'type':'text','class':'timepicker'}),
+			'hora_fin':forms.TextInput(attrs={'type':'text','class':'timepicker'})
 		}
 
 class CrearPaqueteForm(forms.ModelForm):
@@ -160,14 +161,25 @@ class PreInscribirseForm(forms.ModelForm):
 			self.fields['estado_inscripcion'].initial	=False
 			self.fields['paquete'] 						= forms.ModelChoiceField(queryset=Paquete.objects.filter(evento=evento.id))
 
-"""
-class InscribirseForm(forms.ModelForm):
-	docstring for InscribirseForm
+class MaterialActividadForm(forms.ModelForm):
+	paquete = forms.ModelChoiceField(queryset=Paquete.objects.all())
 	class Meta:
+		model=Inscrito
+		fields='__all__'
+
+class CrearExpositorForm(forms.ModelForm):	
+	actividad			= forms.ModelMultipleChoiceField(queryset = Actividad.objects.all())
+
+	
+	class Meta:
+		model=Expositor
 		fields=[
-			'codigo'
-		]
-		widgets={
-			'profile':forms.TextInput(attrs={'class':'input ', 'style':'display:none' ,'type':'hidden'}),
-		}
-		"""
+				'nombre',
+				'apellido',
+				'actividad'
+			]
+	def __init__(self,*args,**kwargs):
+		evento=kwargs.pop('instance_evento',None)
+		super(CrearExpositorForm, self).__init__(*args, **kwargs)
+		if evento:
+			self.fields['actividad'] = forms.ModelMultipleChoiceField(queryset=Actividad.objects.filter(evento=evento.id))
