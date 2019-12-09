@@ -1,0 +1,151 @@
+{%extends 'eventos/index.html'%}
+{%block title%}Gestionar Expositores{%endblock%}
+	
+{%block section_1%}
+	<div class="row container section">
+		<div class="col s6 center-align">
+			<h4 class="blue-text"> Por Actividad</h4>
+			<form method="POST">
+				{%csrf_token%}
+				<select name="actividad">
+					<option disabled="">Actividad</option>
+					{%for actividad in evento.actividad_set.all%}
+						<option value="{{actividad.id}}">{{actividad.nombre}} </option>
+					{%endfor%}
+					
+				</select>
+				<input type="text" name="nombre">
+				<label>Material</label>
+				<input type="number" name="cantidad">
+				<label>Cantidad</label>
+				<input type="number" name="stock">
+				<label>Stock</label>
+				<div>
+					<button class="btn" type="submit" name="send_material_actividad">Agregar Material</button></div>
+				
+			</form>
+		</div>
+		<div class="col s6 center-align">
+			<h4 class="blue-text"> Por Ambiente</h4>
+			<form method="POST">
+				{%csrf_token%}
+				<select name="ambiente">
+					<option disabled="">Ambiente</option>
+					{%for ambiente in evento.ambiente_set.all%}
+						<option value="{{ambiente.nombre}}">{{ambiente.nombre}} </option>
+					{%endfor%}
+					
+				</select>
+				<input type="text" name="nombre">
+				<label>Material</label>
+				<input type="number" name="cantidad">
+				<label>Cantidad</label>
+				<input type="number" name="stock">
+				<label>Stock</label>
+				<div>
+					<button class="btn" type="submit" name="send_material_ambiente">Agregar Material</button></div>
+				
+			</form>
+
+		</div>
+		
+	</div>
+
+{%endblock%}
+{%block section_2%}
+	<div class="container section row ">
+		
+		<div class="col s6">
+			<h4 class="blue-text">Materiales por Actividad</h4>
+			<div class="row ">
+				<form method="GET">
+					<div class="col s8">
+						<select name="ver_actividad">
+						{%for actividad in evento.actividad_set.all%}	
+						<option value="{{actividad.id}}">{{actividad.nombre}}</option>
+						{%endfor%}
+					</select>
+					</div>
+					<button class="btn" name="submit_actividad">Ver</button>	
+				</form>
+			</div>
+			<table>
+				<thead>
+					<tr>
+						<th>Material</th>
+						<th>Actividad</th>
+						<th>Stock</th>
+						<th>Cantidad Total</th>
+					</tr>	
+				</thead>
+
+				<tbody>
+					{%for mat in material%}
+					<tr>
+						<td>{{mat.nombre}}</td>
+						<td>{{mat.actividad}}</td>
+						<td>{{mat.stock}}</td>
+						<td>{{mat.cantidad}}</td>
+					</tr>
+					{%endfor%}
+					</tbody>
+			</table>
+		</div>
+		<div class="col s6">
+			<h4 class="blue-text">Materiales por Ambiente</h4>
+			<div class="row ">
+				<form method="GET">
+					<div class="col s8">
+						<select name="ver_ambiente">
+						{%for ambiente in evento.ambiente_set.all%}	
+						<option value="{{ambiente.nombre}}">{{ambiente.nombre}}</option>
+						{%endfor%}
+					</select>
+					</div>
+					<button class="btn" name="submit_ambiente">Ver</button>	
+				</form>
+			</div>
+			<table>
+				<thead>
+					<tr>
+						<th>Material</th>
+						<th>Actividad</th>
+						<th>Stock</th>
+						<th>Cantidad Total</th>
+					</tr>	
+				</thead>
+
+				<tbody>
+					{%for mat in material%}
+					<tr>
+						<td>{{mat.nombre}}</td>
+						<td>{{mat.actividad}}</td>
+						<td>{{mat.stock}}</td>
+						<td>{{mat.cantidad}}</td>
+					</tr>
+					{%endfor%}
+					</tbody>
+			</table>
+		</div>
+		
+	</div>
+	
+
+
+{%endblock%}
+
+
+
+{%block scrip_text%}
+	<script type="text/javascript">
+		$(document).ready(function(){
+					$(".dropdown-trigger").dropdown();
+    				$('.sidenav').sidenav();
+    				$('.tabs').tabs();
+    				$('.modal').modal();
+    				$('.collapsible').collapsible();
+    				$('select').formSelect();
+    				});
+	</script>
+	
+{%endblock%}
