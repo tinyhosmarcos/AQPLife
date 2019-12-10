@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>{%block title%}Plataforma Cursos {%endblock%}</title>
+	<title>{%block title%}Plataforma Eventos {%endblock%}</title>
 	
 	{% block header %}
 
@@ -52,7 +52,7 @@
 		<nav>
 
 		<div class="nav-wrapper este"  id="nav_bar">
-		  <a href="{%url 'eventos:index_2'%}" class=" brand-logo">AqpLife</a>
+		  <a href="{%url 'eventos:index_2'%}" class=" brand-logo">Make Events</a>
 		  <ul id="nav-mobile" class="right hide-on-med-and-down">
 
 		  	<!-- Dropdown Trigger -->
@@ -79,7 +79,7 @@
 
 			{%for evento in eventos_list%}
 				<div class="carousel-item black-text contenedor_carousel" >
-					<img src="{%static 'eventos/images/banner.png'%}">
+					<img src="{%static 'eventos/images/evento_logo.png'%}" style="width:50%;">
 					
 					<div class="texto_carousel">
 					<h2 class="flow-text black-text"><a href="{%url 'eventos:ver_evento' evento.id%}">{{evento.nombre}}</a></h2>
@@ -138,7 +138,7 @@
 					<a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons index">assignment_ind</i></a>
 					</div>
 					<div class="card-content">
-					<p>¿Ya tienes tu evento?.k|	 Te ayudamos a mejorarlo y que superes tu meta de participación. MakeEvents esta para ti. </p>
+					<p>¿Ya tienes tu evento?. Te ayudamos a mejorarlo y que superes tu meta de participación. MakeEvents esta para ti. </p>
 				</div>
 			</div>
 
@@ -152,7 +152,7 @@
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
-                <h5 class="white-text">AqpLife</h5>
+                <h5 class="white-text">Make Events</h5>
                 <p class="grey-text text-lighten-4">Derechos Reservados</p>
               </div>
               <div class="col l4 offset-l2 s12">
@@ -168,7 +168,7 @@
           </div>
           <div class="footer-copyright">
             <div class="container">
-            © 2014 Derechos AqpLife-Arequipa-Peru
+            © 2019 Derechos AqpLife-Arequipa-Peru
             <a class="grey-text text-lighten-4 right" href="#!">IS2</a>
             </div>
           </div>
