@@ -46,32 +46,7 @@
 			</form>
 			{% endif%}
 		</div>
-		<div class="col s5">
-			<h4 class="center-align">Paquetes Disponibles</h4>
-			<ul class="collapsible popout">
-			
-			{%for paquete in evento.paquete_set.all%}
-
-				<li>
-					<div class="collapsible-header">
-						<i class="material-icons col s2">confirmation_number
-					</i><span class="col s8">{{paquete.nombre}}</span>
-						<!-- Modal Trigger Paquete Delete -->
-								
-					</div>
-
-					<div class="collapsible-body row">
-						<h6 class="col s6">Descripcion</h6>
-						<span class="col s12 left-align">
-							{{paquete.descripcion}} <a href="">+info</a>
-						</span>
-						<h6 class="col s6">Costo</h6><a class="col s6 waves-effect waves-light btn">{{paquete.costo}} $</a>
-					</div>	
-				</li>				
-			{%endfor%}
-			
-		</ul>
-		</div>
+		
 		{%else%}
 		<div class="col s6">
 			<h4>Inscribirse</h4>

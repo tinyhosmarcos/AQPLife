@@ -243,7 +243,7 @@ class EventoDetailView(DetailView):
                 pos -= 20
                 pdf.setFont('Helvetica-Bold', 16)
                 pdf.drawString(50, pos-20 , 'Egresos')
-                pos -= 20
+                pos -= 40
                 pdf.setFont('Helvetica', 12)
                 for i in egresos:
                     pdf.drawString(50, pos, i.motivo + ' : S./' + str(i.cantidad) )
@@ -282,7 +282,7 @@ class EventoDetailView(DetailView):
             pos -= 20
             pdf.setFont('Helvetica-Bold', 16)
             pdf.drawString(50, pos-20 , 'Egresos')
-            pos -= 20
+            pos -= 40
             pdf.setFont('Helvetica', 12)
             for i in egresos:
                 pdf.drawString(50, pos, i.motivo + ' : S./' + str(i.cantidad) )
