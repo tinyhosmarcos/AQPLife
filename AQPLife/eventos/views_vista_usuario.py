@@ -79,6 +79,7 @@ class Pre_InscribirseDetailView(DetailView):
 		self.context['inscrito']	=	inscrito
 		return render(request,self.template_name,self.context)
 
+    # CU-I01 Pre-inscripcion
 	def post(self, request, *args, **kwargs):
 		profile 					=	Profile.objects.get(user=request.user.id)
 		evento 						=	Evento.objects.get(pk=self.kwargs.get("evento_id"))
@@ -114,15 +115,12 @@ class InscribirseDetailView(DetailView):
         self.context['inscrito'] = inscrito
         self.context['evento'] = evento
 
+        # CU-R09 Generar Credenciales        
         if request.GET.get('descargar_credenciales'):
-            #Indicamos el tipo de contenido a devolver, en este caso un pdf
             response = HttpResponse(content_type='application/pdf')
-            #La clase io.BytesIO permite tratar un array de bytes como un fichero binario, se utiliza como almacenamiento temporal
             buffer = io.BytesIO()
-            #Canvas nos permite hacer el reporte con coordenadas X y Y
             pdf = canvas.Canvas(buffer)
-            #Llamo al método cabecera donde están definidos los datos que aparecen en la cabecera del reporte.
-            img = qrcode.make(inscrito.codigo_inscripcion)
+            img = qrcode.make(inscrito.codigo_inscripcion)  # generamos el codigo qr usado para la asistencia
             img.save("qr.jpg")
             pdf.drawString(250,800, 'CREDENCIALES')
             pdf.drawString(100,740, 'Apellidos: ')
@@ -142,7 +140,7 @@ class InscribirseDetailView(DetailView):
 
         return render(request,self.template_name,self.context)
 
-
+    # CU-I02 Inscripcion
     def post(self, request, *args, **kwargs):
         evento                         =    Evento.objects.get(pk=self.kwargs.get("evento_id"))
         profile                     =    Profile.objects.get(user=request.user.id)

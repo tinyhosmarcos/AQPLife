@@ -92,7 +92,9 @@ def Obtener_Montos(evento, fecha=None):
     return lista_ingresos, lista_egresos
 
 
+# CU-C03 Visualizar Evento
 class Gestionar_EventoDetailView(DetailView):
+    """ Permite ver los Eventos disponibles en la plataforma Make Events"""
     template_name='eventos/gestionar_evento.html'
     def get_context_data(self, **kwargs):
         context = super(Gestionar_EventoDetailView, self).get_context_data(**kwargs)
@@ -105,6 +107,7 @@ class Gestionar_EventoDetailView(DetailView):
         return get_object_or_404(Profile,user=_id)
 
 
+
 class EventoDetailView(DetailView):
     template_name='eventos/evento.html'
     def  get_object(self):
@@ -115,6 +118,7 @@ class EventoDetailView(DetailView):
     def get(self,request,*args,**kwargs):
         _id=self.kwargs.get("evento_id")
         evento = Evento.objects.get(id=_id)
+        # CU R08: Generar Certificados
         if request.GET.get('generar_certificados'):
             try:
                 inscritos = Inscrito.objects.filter(evento=evento)
@@ -122,11 +126,10 @@ class EventoDetailView(DetailView):
                 inscritos = [] 
             response = HttpResponse(content_type='application/pdf')
             from reportlab.lib.pagesizes import letter, landscape
-            #La clase io.BytesIO permite tratar un array de bytes como un fichero binario, se utiliza como almacenamiento temporal
             buffer = io.BytesIO()
             pdf = canvas.Canvas(buffer, pagesize=landscape(letter))
             for i in inscritos:
-                if Puede_Generar(i) is True:
+                if Puede_Generar(i) is True:  # Puede Generar es True si el inscrito tiene mas del 70% de asistencia al evento
                     pdf.drawImage('logo_events.png', 50, 430, 150, 150,preserveAspectRatio=True)                
                     pdf.setFont('Helvetica-Bold', 26)
                     pdf.drawString(250, 500, 'Certificado de Asistencia')
@@ -152,6 +155,7 @@ class EventoDetailView(DetailView):
             response.write(pdf)
             return response
 
+        # CU-R05 Reporte Asistencia
         if request.GET.get("reporte_asistencia"):
             try:
                 actividades = Actividad.objects.filter(evento=evento)
@@ -162,7 +166,7 @@ class EventoDetailView(DetailView):
             buffer = io.BytesIO()
             pdf = canvas.Canvas(buffer)
             for a in actividades:
-                asistentes, inscritos = Lista_Asistentes(a)
+                asistentes, inscritos = Lista_Asistentes(a) # Obtenemos lista de inscritos y asistentes por cada actividad
                 pdf.setFont('Helvetica-Bold', 24)
                 pdf.drawCentredString(300, 800, 'Actividad: ' + a.nombre)
                 pdf.setFont('Helvetica-Bold', 18)
@@ -188,6 +192,7 @@ class EventoDetailView(DetailView):
             response.write(pdf)
             return response
 
+        # CU-R06 Reporte Paquete
         if request.GET.get("reporte_paquete"):
             try:
                 lista_actividades = Actividad.objects.filter(evento=evento)
@@ -199,7 +204,7 @@ class EventoDetailView(DetailView):
             buffer = io.BytesIO()
             pdf = canvas.Canvas(buffer)
             for paquete in lista_paquetes:
-                lista_inscritos = Inscrito.objects.filter(paquete=paquete).distinct()
+                lista_inscritos = Inscrito.objects.filter(paquete=paquete).distinct()  # obtenemos todos los inscritos segun el paquete que compraron
                 pdf.setFont('Helvetica-Bold', 24)
                 pdf.drawCentredString(300, 800, 'Paquete: ' + paquete.nombre)
                 pdf.setFont('Helvetica-Bold', 18)
@@ -219,17 +224,18 @@ class EventoDetailView(DetailView):
             response.write(pdf)
             return response
 
+        # CU-R07 Cierre Caja - dia
         if request.GET.get("caja_dia"):
             response = HttpResponse(content_type='application/pdf')         
             buffer = io.BytesIO()
             pdf = canvas.Canvas(buffer)
             fecha = evento.fecha_inicio
-            while fecha <= evento.fecha_fin:
+            while fecha <= evento.fecha_fin: # hacemos ese proceso por cada dia del evento
                 total_ingresos = 0
                 total_egresos = 0
                 pdf.setFont('Helvetica-Bold', 24)
                 pdf.drawCentredString(300, 800, 'Día: ' + fecha.strftime('%y - %m - %d'))
-                ingresos, egresos = Obtener_Montos(evento, fecha)
+                ingresos, egresos = Obtener_Montos(evento, fecha) # obtenemos ingresos y egresos asociados al evento segun la fecha indicada
                 pos = 720
                 pdf.setFont('Helvetica-Bold', 16)
                 pdf.drawString(50, pos + 20, 'Ingresos')
@@ -259,6 +265,8 @@ class EventoDetailView(DetailView):
             buffer.close()
             response.write(pdf)
             return response
+
+        # CU-R07 Cierre Caja - Evento
         if request.GET.get("caja_evento"):
             response = HttpResponse(content_type='application/pdf')         
             buffer = io.BytesIO()
@@ -268,7 +276,7 @@ class EventoDetailView(DetailView):
             total_ingresos = 0
             total_egresos = 0
             pdf.setFont('Helvetica-Bold', 24)
-            ingresos, egresos = Obtener_Montos(evento)
+            ingresos, egresos = Obtener_Montos(evento)  # obtenemos ingresos y egresos asociados al evento, en todos los días del evento            
             pos = 720
             pdf.setFont('Helvetica-Bold', 16)
             pdf.drawString(50, pos + 20, 'Ingresos')
@@ -300,49 +308,49 @@ class EventoDetailView(DetailView):
 
         return super(EventoDetailView, self).get(request, *args, **kwargs)
 
-
-
-
+# CU-C06 Modificar Evento
 class ModificarEventoDetailView(DetailView):
+    """ Permite modificar datos (nombre, tipo de evento, fechas) de un Evento"""
     template_name        ='eventos/modificar_evento.html'
     context             ={
 
     }
-    def get_object(self):
+    def get_object(self):  # este metodo nos retornara el id para buscar el Evento en la tabla Evento
         _id             =self.kwargs.get("evento_id")
         return get_object_or_404(Evento,id=_id)
         
     def get(self, request, *args, **kwargs):
-        
-        evento_tmp         =get_object_or_404(Evento,id=self.kwargs.get("evento_id"))
+        evento_tmp         =get_object_or_404(Evento,id=self.kwargs.get("evento_id"))  # tenemos que obtener el obj Evento
         form             =ModificarEventoForm(request.POST or None, instance=evento_tmp)
         self.context['form']                =form
         return render(request, self.template_name,self.context )
 
     def post(self, request, *args, **kwargs):
-        evento_tmp         =get_object_or_404(Evento,id=self.kwargs.get("evento_id"))
+        evento_tmp         =get_object_or_404(Evento,id=self.kwargs.get("evento_id"))  # tenemos que obtener el obj Evento
         form             =ModificarEventoForm(request.POST or None, instance=evento_tmp)
-        if form.is_valid():
-            print("entro post")
+        if form.is_valid():  # si los datos son correctos (fechas, tipo o nombre)
             form.save()
             return redirect('eventos:evento',evento_id=self.kwargs.get("evento_id"))
+
         evento_tmp         =get_object_or_404(Evento,id=self.kwargs.get("evento_id"))
         form             =ModificarEventoForm(request.POST or None, instance=evento_tmp)
         return render(request, self.template_name,self.context)
-    
+
+
+# CU-C04 Crear Evento    
 class CrearEventoDetailView(DetailView):
-    """Controlador para Crear Evento"""
+    """Controlador para Crear Evento, contiene funciones para crear Evento o Adaptar un Evento"""
     template_name       ='eventos/crear_evento.html'
     context             ={
 
     }
-    def  get_object(self):
+    def  get_object(self):  # este metodo nos retornara el id para buscar el Profile en la tabla Profile
         _id=self.kwargs.get("user_id")
         return get_object_or_404(Profile,user=_id)
 
     def get(self, request, *args, **kwargs):
-        form                                =CrearEventoForm()
-        profile                             =Profile.objects.get(user=kwargs.get("user_id"))
+        form                                =CrearEventoForm()  # obtenemos el formulario para creacion de evento 
+        profile                             =Profile.objects.get(user=kwargs.get("user_id"))  # necesitamos guardar quien crea el Evento
         personal_list                       =Personal.objects.filter(profile=profile,categoria_personal=1)
         self.context['personal_list']       = personal_list
         self.context['form']                =form
@@ -350,19 +358,20 @@ class CrearEventoDetailView(DetailView):
 
     def post(self, request, *args, **kwargs):
         form            = CrearEventoForm(request.POST)
-        if form.is_valid():
+        if form.is_valid():  # necesitamos tener todos los datos (nombre, tipo, fechas)
             evento      =form.save();
             personal    =Personal.objects.create(profile_id=self.kwargs.get("user_id"),evento_id=evento.id,categoria_personal_id=1)
+
+
+        # CU-C04.1 Adaptar Evento
         if 'adaptar' in request.POST:
-            adaptar     =Evento.objects.get(pk=request.POST.get('evento_adaptar'))
+            adaptar     =Evento.objects.get(pk=request.POST.get('evento_adaptar'))  # obtenemos el Evento "base" para adaptar
             evento_create       =Evento.objects.create(nombre=request.POST.get('nombre'),tipo_evento=adaptar.tipo_evento,
                                         fecha_inicio=request.POST.get('fecha_inicio'),
                                         fecha_fin=request.POST.get('fecha_fin'))
-            lista_ambientes=Ambiente.objects.filter(evento=adaptar.id)
-            print(evento_create.id)
+            lista_ambientes=Ambiente.objects.filter(evento=adaptar.id)   # obtenemos la informacion de Evento "base" para copiarla al nuevo Evento
             _id=evento_create.id
-            for ambiente in lista_ambientes:
-                print(ambiente.nombre)
+            for ambiente in lista_ambientes:  # copiar la informacion del Evento "base" al nuevo Evento
                 adaptar_ambiente=Ambiente.objects.create(nombre=ambiente.nombre+"_"+str(_id),
                                                         evento=evento_create,
                                                         ubicacion=ambiente.ubicacion,
@@ -415,15 +424,19 @@ class Gestionar_MaterialDetailView(DetailView):
                 )
 
         return render(request, self.template_name,self.context )    
+
+
+# CU-C11 Crear Ambiente, CU-C09 Visualizar Ambientes
 class Gestionar_AmbienteDetailView(DetailView):
+    """ Este controlador permite Agregar ambientes a un Evento y Visualizarlos"""
     template_name        ='eventos/gestionar_ambiente.html'
     context             ={
     }
     
     def get(self, request, *args, **kwargs):
         evento= Evento.objects.get(pk=self.kwargs.get("evento_id"))
-        self.context['evento']                =evento
-        form                                 =CrearAmbienteForm()
+        self.context['evento']                =evento  # pasamos el Evento a la interfaz para visualizar los Ambientes asociados
+        form                                 =CrearAmbienteForm()  # pasamos el formulario para Crear Ambiente (nombre, ubicacion, capadidad)
         form.fields['evento'].initial        =evento.id
         self.context['form']                =form
         return render(request, self.template_name,self.context )
@@ -439,7 +452,9 @@ class Gestionar_AmbienteDetailView(DetailView):
         return render(request, self.template_name,self.context)
 
 
+# CU-C14 Crear Actividad, CU-C14 Visualizar Actividad
 class Gestionar_ActividadDetailView(DetailView):
+    """ Permite Crear actividades (una vez que han sido creados los Ambientes)"""
     template_name        ='eventos/gestionar_actividad.html'
     context             ={
 
@@ -447,7 +462,7 @@ class Gestionar_ActividadDetailView(DetailView):
     def get(self, request, *args, **kwargs):
         evento= Evento.objects.get(pk=self.kwargs.get("evento_id"))
         self.context['evento']                =evento
-        form                                 =CrearActividadForm()
+        form                                 =CrearActividadForm()  # formulario para actividad (nombre, fecha, hora inicio y fin)
         form.fields['evento'].initial        =evento.id
         self.context['form']                =form
         return render(request, self.template_name,self.context )
@@ -457,10 +472,7 @@ class Gestionar_ActividadDetailView(DetailView):
         evento= Evento.objects.get(pk=self.kwargs.get("evento_id"))    
         self.context['evento']                =evento
         
-        print(form.data['ambiente'])
         if form.is_valid():
-            
-            print("entro")
             form.save()
         form                                 =CrearActividadForm()
         form.fields['evento'].initial        =evento.id
