@@ -1,9 +1,13 @@
 {% load static %}
 .nav-wrapper.este{
-  background-color:#659DBD;
+  background-color: #8EE4AF;
+}
+.page-footer{
+
+  background-color: #8EE4AF;
 }
 .material-icons.index{
-	background-color:#659DBD;
+	background-color:#8EE4AF;
 }
  /*background-image: url("images/index_bacground.png");*/
 .carousel-item{
@@ -23,3 +27,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+.btn{
+    background-color:#8EE4AF;
+}
+.btn-large{
+    background-color:#8EE4AF;
+}
+body {background-color: #eee2DC;}
